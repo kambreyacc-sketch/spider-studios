@@ -2,7 +2,11 @@ import Link from "next/link";
 import { games } from "../data/games";
 
 const discord=[["Spider Studios","https://discord.gg/ghSzF5fcK"],["Spider Uncopylocked","https://discord.gg/ue2VP47Kn"]];
-const communities=[["YouTube","https://www.youtube.com/channel/UChHjRINwtNyjRS7VkWl2LHA"],["Strawberryini Studio","https://www.roblox.com/communities/486751351/Strawberryini-Studio#!/about"],["HypeX Games","https://www.roblox.com/communities/811389125/HypeX-Games#!/about"]];
+const communities=[
+ ["YouTube","https://www.youtube.com/channel/UChHjRINwtNyjRS7VkWl2LHA","https://tse3.mm.bing.net/th/id/OIP.V3WOCLFe6BjXEnOssE_yGwHaHa?r=0&pid=Api&h=220&P=0"],
+ ["Strawberryini Studio","https://www.roblox.com/communities/486751351/Strawberryini-Studio#!/about","https://tr.rbxcdn.com/180DAY-e7226b6fc3cfe9ad1fd935060b428002/150/150/Image/Webp/noFilter"],
+ ["HypeX Games","https://www.roblox.com/communities/811389125/HypeX-Games#!/about","https://cdn.discordapp.com/icons/1530962123000381690/071e82d706f2b4d00aaebed6d48c87a5.webp?size=1024"]
+];
 
 function Arrow(){return <span aria-hidden>↗</span>}
 
@@ -11,7 +15,7 @@ export default function Home(){
  return <main>
   <nav className="siteNav">
    <Link className="brand" href="/"><span className="brandMark">S</span><span>SPIDER</span><b>STUDIOS</b></Link>
-   <div className="navlinks"><a href="#games">Games</a><Link href="/about">About</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><a href="#community">Community</a></div>
+   <div className="navlinks"><a href="#games">Games</a><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><a href="#community">Community</a></div>
   </nav>
   <section className="studioHero">
    <div className="heroOrb heroOrbOne"/><div className="heroOrb heroOrbTwo"/><div className="heroNoise"/>
@@ -54,7 +58,11 @@ export default function Home(){
   <section className="acquisitionSection"><div><span className="sectionKicker">HAVE A GAME?</span><h2>BRING IT<br/><em>TO SPIDER.</em></h2></div><div><p>Think your Roblox experience could become something bigger? Submit your game for consideration.</p><Link className="primaryBtn" href="/sell-game">SELL YOUR GAME <Arrow/></Link></div></section>
 
   <section id="community" className="communitySection"><div className="sectionIntro"><div><span className="sectionKicker">COMMUNITY</span><h2>STAY<br/><em>CONNECTED.</em></h2></div><p>Follow Spider Studios, meet other players and creators, and keep up with new releases.</p></div>
-   <div className="linkColumns"><div><h3>DISCORD</h3>{discord.map(([name,url])=><a key={name} href={url} target="_blank" rel="noreferrer">{name}<Arrow/></a>)}</div><div><h3>NETWORK</h3>{communities.map(([name,url])=><a key={name} href={url} target="_blank" rel="noreferrer">{name}<Arrow/></a>)}</div></div>
+   <div className="communityCards">
+ <a className="communityCard" href={discord[0][1]} target="_blank" rel="noreferrer"><img src="https://cdn.discordapp.com/icons/1541030301336215562/4119cf6ca8318ba22c8882efb6e18505.webp?size=1024" alt=""/><div><small>DISCORD</small><h3>Spider Studios</h3><span>JOIN COMMUNITY <Arrow/></span></div></a>
+ <a className="communityCard" href={discord[1][1]} target="_blank" rel="noreferrer"><img src="https://cdn.discordapp.com/icons/1411733652257374242/06da1c0125b044b0626e60d150cab1fc.webp?size=1024" alt=""/><div><small>DISCORD</small><h3>Spider Uncopylocked</h3><span>JOIN COMMUNITY <Arrow/></span></div></a>
+ {communities.map(([name,url,img])=><a className="communityCard" key={name} href={url} target="_blank" rel="noreferrer"><img src={img} alt=""/><div><small>NETWORK</small><h3>{name}</h3><span>VISIT <Arrow/></span></div></a>)}
+ </div>
   </section>
   <footer className="siteFooter"><div><Link className="brand" href="/"><span className="brandMark">S</span><span>SPIDER</span><b>STUDIOS</b></Link><p>Independent Roblox Game Studio</p></div><div><Link href="/about">About</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link></div><small>© {new Date().getFullYear()} Spider Studios</small></footer>
  </main>
