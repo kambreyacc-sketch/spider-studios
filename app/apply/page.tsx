@@ -1,20 +1,17 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
-export default function ApplyPage({ searchParams }: { searchParams: Promise<{ role?: string }> }) {
+export default function ApplyPage() {
+  const params = useSearchParams();
   const [role, setRole] = useState("");
   const [sent, setSent] = useState(false);
 
-  async function loadRole() {
-    const params = await searchParams;
-    setRole(params.role || "");
-  }
-
-  if (!role && typeof window !== "undefined") {
-    void loadRole();
-  }
+  useEffect(() => {
+    setRole(params.get("role") || "");
+  }, [params]);
 
   function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,7 +22,6 @@ export default function ApplyPage({ searchParams }: { searchParams: Promise<{ ro
     <main className="subpage">
       <nav className="nav"><Link className="brand" href="/">SPIDER<span>STUDIOS</span></Link><div className="navlinks"><Link href="/careers">Careers</Link><Link href="/#games">Games</Link></div></nav>
       <header className="pageHero compact"><p className="eyebrow">APPLICATION</p><h1>APPLY<br /><em>TO JOIN.</em></h1><p>Send your information to the Spider Studios team.</p></header>
-
       {sent ? (
         <section className="formWrap success"><div className="successIcon">✓</div><h2>APPLICATION RECEIVED</h2><p>Your application has been submitted on this site. We'll review the information you provided.</p><Link className="button" href="/careers">BACK TO CAREERS ↗</Link></section>
       ) : (
