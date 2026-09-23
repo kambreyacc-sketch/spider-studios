@@ -1,14 +1,4 @@
 "use client";
-
-import { FormEvent, useState } from "react";
 import Link from "next/link";
-
-export default function ContactPage() {
-  const [sent,setSent]=useState(false);
-  function submit(e:FormEvent<HTMLFormElement>){e.preventDefault();setSent(true);}
-  return <main className="subpage"><nav className="nav"><Link className="brand" href="/">SPIDER<span>STUDIOS</span></Link><div className="navlinks"><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link></div></nav>
-    <header className="pageHero compact"><p className="eyebrow">CONTACT</p><h1>LET'S<br /><em>TALK.</em></h1><p>Creator, business, partnership, and general inquiries.</p></header>
-    {sent?<section className="formWrap success"><div className="successIcon">✓</div><h2>MESSAGE RECEIVED</h2><p>Thanks for reaching out to Spider Studios.</p><Link className="button" href="/">BACK HOME ↗</Link></section>:<form className="formWrap" onSubmit={submit}><label>NAME<input required/></label><label>EMAIL<input type="email" required/></label><label>INQUIRY TYPE<select defaultValue="general"><option value="general">General</option><option value="creator">Creator</option><option value="business">Business</option></select></label><label>MESSAGE<textarea rows={8} required/></label><button className="button" type="submit">SEND MESSAGE ↗</button></form>}
-    <footer><Link className="brand" href="/">SPIDER<span>STUDIOS</span></Link><small>© {new Date().getFullYear()} Spider Studios</small></footer>
-  </main>;
-}
+import {FormEvent,useState} from "react";
+export default function ContactPage(){const [done,setDone]=useState(false);const submit=(e:FormEvent<HTMLFormElement>)=>{e.preventDefault();setDone(true)};return <main className="subpage"><nav className="siteNav"><Link className="brand" href="/"><span className="brandMark">S</span><span>SPIDER</span><b>STUDIOS</b></Link><div className="navlinks"><Link href="/#games">Games</Link><Link href="/about">About</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link></div></nav><header className="pageHero"><div className="heroPill"><span/> CONTACT</div><h1>LET'S<br/><em>TALK.</em></h1><p>Partnerships, creator questions, business opportunities, and other studio inquiries.</p></header>{done?<section className="formWrap success"><div className="successIcon">✓</div><h2>MESSAGE RECEIVED</h2><p>Your message has been prepared in the site flow. Connect the form to your preferred email or database when you're ready for live delivery.</p><Link className="primaryBtn" href="/">BACK HOME <span>↗</span></Link></section>:<form className="formWrap" onSubmit={submit}><div className="formGrid"><label>NAME<input required name="name"/></label><label>EMAIL<input required type="email" name="email"/></label><label>INQUIRY TYPE<select name="category"><option>General</option><option>Creator</option><option>Business</option><option>Partnership</option></select></label><label className="full">MESSAGE<textarea required rows={8} name="message"/></label></div><button className="primaryBtn submitBtn" type="submit">SEND MESSAGE <span>↗</span></button></form>}<footer className="siteFooter"><Link className="brand" href="/"><span className="brandMark">S</span><span>SPIDER</span><b>STUDIOS</b></Link><small>© {new Date().getFullYear()} Spider Studios</small></footer></main>}

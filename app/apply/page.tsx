@@ -1,42 +1,13 @@
 "use client";
-
-import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-
-export default function ApplyPage() {
-  const params = useSearchParams();
-  const [role, setRole] = useState("");
-  const [sent, setSent] = useState(false);
-
-  useEffect(() => {
-    setRole(params.get("role") || "");
-  }, [params]);
-
-  function submit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSent(true);
-  }
-
-  return (
-    <main className="subpage">
-      <nav className="nav"><Link className="brand" href="/">SPIDER<span>STUDIOS</span></Link><div className="navlinks"><Link href="/careers">Careers</Link><Link href="/#games">Games</Link></div></nav>
-      <header className="pageHero compact"><p className="eyebrow">APPLICATION</p><h1>APPLY<br /><em>TO JOIN.</em></h1><p>Send your information to the Spider Studios team.</p></header>
-      {sent ? (
-        <section className="formWrap success"><div className="successIcon">✓</div><h2>APPLICATION RECEIVED</h2><p>Your application has been submitted on this site. We'll review the information you provided.</p><Link className="button" href="/careers">BACK TO CAREERS ↗</Link></section>
-      ) : (
-        <form className="formWrap" onSubmit={submit}>
-          <label>ROLE<input value={role} onChange={(e)=>setRole(e.target.value)} placeholder="Role you're applying for" required /></label>
-          <label>FULL NAME<input name="name" placeholder="Your name" required /></label>
-          <label>EMAIL<input type="email" name="email" placeholder="you@example.com" required /></label>
-          <label>DISCORD USERNAME<input name="discord" placeholder="username" /></label>
-          <label>PORTFOLIO / WORK LINK<input type="url" name="portfolio" placeholder="https://..." /></label>
-          <label>ABOUT YOU<textarea name="about" rows={7} placeholder="Tell us about yourself, your skills, and what you can bring to Spider Studios." required /></label>
-          <label>WHY THIS ROLE?<textarea name="why" rows={5} placeholder="Why do you want to join Spider Studios?" required /></label>
-          <button className="button" type="submit">SUBMIT APPLICATION ↗</button>
-        </form>
-      )}
-      <footer><Link className="brand" href="/">SPIDER<span>STUDIOS</span></Link><small>© {new Date().getFullYear()} Spider Studios</small></footer>
-    </main>
-  );
+import {FormEvent,useEffect,useState} from "react";
+export default function ApplyPage(){
+ const [role,setRole]=useState("General Application"),[done,setDone]=useState(false);
+ useEffect(()=>{const r=new URLSearchParams(window.location.search).get("role");if(r)setRole(r)},[]);
+ const submit=(e:FormEvent<HTMLFormElement>)=>{e.preventDefault();setDone(true)};
+ return <main className="subpage"><nav className="siteNav"><Link className="brand" href="/"><span className="brandMark">S</span><span>SPIDER</span><b>STUDIOS</b></Link><div className="navlinks"><Link href="/#games">Games</Link><Link href="/about">About</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link></div></nav>
+ <header className="pageHero"><div className="heroPill"><span/> APPLICATION</div><h1>APPLY<br/><em>TO SPIDER.</em></h1><p>Tell us who you are, what you can do, and why you'd be a good fit for the studio.</p></header>
+ {done?<section className="formWrap success"><div className="successIcon">✓</div><span className="sectionKicker">SPIDER STUDIOS</span><h2>APPLICATION RECEIVED</h2><p>Your application for <strong>{role}</strong> has been received. The current site is a front-end application flow; connect a backend when you're ready to store and review submissions.</p><Link className="primaryBtn" href="/careers">BACK TO CAREERS <span>↗</span></Link></section>:
+ <form className="formWrap" onSubmit={submit}><div className="formSection"><span className="stepNo">01</span><h3>ROLE</h3><label className="formGrid"><span>POSITION<input value={role} onChange={e=>setRole(e.target.value)} /></span></label></div><div className="formSection"><span className="stepNo">02</span><h3>ABOUT YOU</h3><div className="formGrid"><label>FULL NAME<input required name="name"/></label><label>EMAIL<input required type="email" name="email"/></label><label>DISCORD USERNAME<input name="discord"/></label><label>PORTFOLIO / WORK LINK<input name="portfolio"/></label><label className="full">TELL US ABOUT YOURSELF<textarea required rows={6} name="about"/></label><label className="full">WHY THIS ROLE?<textarea required rows={6} name="why"/></label></div></div><button className="primaryBtn submitBtn" type="submit">SUBMIT APPLICATION <span>↗</span></button></form>}
+ <footer className="siteFooter"><Link className="brand" href="/"><span className="brandMark">S</span><span>SPIDER</span><b>STUDIOS</b></Link><small>© {new Date().getFullYear()} Spider Studios</small></footer></main>
 }
