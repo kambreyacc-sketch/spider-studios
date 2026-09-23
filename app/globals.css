@@ -33,3 +33,46 @@ input[type=file]{appearance:none;background:#0a0c11;border:1px dashed #343947!im
 .communityCards{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}.communityCard{min-height:190px;padding:20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,#11141c,#0b0d12);text-decoration:none;transition:.25s}.communityCard:hover{transform:translateY(-5px);border-color:rgba(120,130,255,.35)}.communityCard img{width:58px;height:58px;border-radius:17px;object-fit:cover;margin-bottom:28px}.communityCard small{display:block;color:#687180;font-size:8px;letter-spacing:.16em}.communityCard h3{font-size:15px;margin:7px 0 18px}.communityCard span{font-size:8px;letter-spacing:.13em;color:#aeb3be}@media(max-width:1100px){.communityCards{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){.communityCards{grid-template-columns:1fr 1fr}.communityCard{min-height:170px}}
 
 .brandMark img{width:100%;height:100%;border-radius:10px;object-fit:cover;display:block}.brandMark{overflow:hidden}.primaryBtn{background:#f1f2f4;color:#08090d;box-shadow:0 12px 30px rgba(0,0,0,.25)}.primaryBtn:hover{background:#fff}.heroPill span{background:#d8dbe1;box-shadow:none}.creatorIcon{background:#f1f2f4;color:#08090d}.successIcon{background:#f1f2f4;color:#08090d}
+
+/* 2026 Spider Studios rebrand */
+:root{--bg:#10131a;--panel:#171b24;--panel2:#1b202a;--line:rgba(255,255,255,.12);--muted:#a0a7b4;--blue:#d8dbe2;--purple:#737985}
+body{background:#10131a;color:#f4f5f7}
+.siteNav{height:86px;background:rgba(16,19,26,.94);border-bottom:1px solid rgba(255,255,255,.12)}
+.navlinks a{font-size:12px;color:#a8aeba}.navlinks a:hover{color:#fff}
+.brand{font-size:20px}.brandMark{width:40px;height:40px;border-radius:12px}
+.brandMark img{width:100%;height:100%;display:block;object-fit:cover;border-radius:11px}
+.studioHero{min-height:820px;background:radial-gradient(circle at 78% 24%,rgba(255,255,255,.09),transparent 28%),radial-gradient(circle at 20% 78%,rgba(255,255,255,.055),transparent 30%),#11141b}
+.heroNoise{opacity:.16;background-size:110px 110px}.heroOrbOne{background:radial-gradient(circle,rgba(255,255,255,.12),transparent 68%)}.heroOrbTwo{background:radial-gradient(circle,rgba(255,255,255,.07),transparent 68%)}
+.heroInner{width:min(1280px,90vw)}
+.studioHero h1{font-size:clamp(88px,12vw,175px);max-width:1150px}
+.heroInner>p{font-size:18px;color:#a5abb7;max-width:760px}
+.heroPill{font-size:11px;color:#9fa6b3}.heroPill span{background:#d8dbe2;box-shadow:none}
+.primaryBtn{background:#f0f1f3;color:#0c0e13;box-shadow:0 16px 35px rgba(0,0,0,.3);padding:17px 22px;font-size:11px}.primaryBtn:hover{background:#fff}
+.ghostBtn{border:1px solid rgba(255,255,255,.16);background:#191d26;color:#e4e6eb;padding:17px 22px;font-size:11px}
+.adminQuick{display:inline-flex;align-items:center;justify-content:center;padding:17px 19px;border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#8e96a5;text-decoration:none;font-size:10px;font-weight:900;letter-spacing:.12em;background:#141820}
+.heroBottom{font-size:10px;color:#707887}
+.statsBar{padding:29px;background:#191d26;border-color:rgba(255,255,255,.13);box-shadow:0 25px 80px rgba(0,0,0,.38)}
+.statsBar strong{font-size:29px}.statsBar span{font-size:10px;color:#8d95a4}
+.studioSection,.storySection,.workSection,.teamSection,.communitySection{padding-top:140px;padding-bottom:140px}
+.sectionIntro{gap:80px;margin-bottom:60px}.sectionIntro h2,.aboutCopy h2,.creatorSection h2,.acquisitionSection h2{font-size:clamp(68px,8vw,110px)}
+.sectionKicker{font-size:11px;color:#8d95a4}
+.featuredGrid,.gameGrid{gap:24px}.bigGameCard{height:520px;border-radius:26px;background:#171b24}.gameCard{border-radius:22px;background:#171b24}
+.gameImage{height:320px}.gameCardInfo{padding:27px}.gameCardInfo h3{font-size:25px}.gameCardInfo p{font-size:14px;color:#9199a7}
+.aboutSection{padding:140px max(5vw,55px);background:#151922}
+.aboutVisual{min-height:600px;background:radial-gradient(circle at 50% 45%,rgba(255,255,255,.10),transparent 30%),#11141b;border-radius:34px}
+.spiderBadge{width:220px;height:220px;border-radius:54px;background:#171b24;border:1px solid rgba(255,255,255,.15);box-shadow:0 30px 80px rgba(0,0,0,.4);padding:18px}
+.spiderBadge img{width:100%;height:100%;object-fit:cover;border-radius:40px}
+.timeline{background:#171b24}.timeline article{min-height:250px;padding:32px}.timeline h3{font-size:20px}
+.serviceGrid,.teamGrid{gap:18px}.serviceCard,.teamGrid article{background:#171b24;min-height:250px;padding:30px}
+.teamGrid article>span{color:#b5bac4}
+.creatorSection,.acquisitionSection{background:#191d26;border-color:rgba(255,255,255,.12);padding:70px}
+.creatorIcon{background:#f0f1f3;color:#0c0e13}
+.communityCards{gap:18px}.communityCard{min-height:220px;padding:24px;background:#171b24;border-radius:20px}.communityCard img{width:70px;height:70px;border-radius:20px}.communityCard h3{font-size:17px}
+.siteFooter{padding:55px max(5vw,55px);background:#0e1117}
+.pageHero{padding-top:145px;padding-bottom:100px}.pageHero h1{font-size:clamp(86px,11vw,160px)}
+.roleCard,.formWrap,.formSection,.businessBox{background:#171b24;border-color:rgba(255,255,255,.12)}
+.roleCard{min-height:350px;padding:32px}.roleCard h3{font-size:26px}
+.formGrid input,.formGrid textarea,.formGrid select,.adminGrid input,.adminGrid textarea,.adminLogin input{background:#0f1218;border-color:rgba(255,255,255,.15)}
+.adminShell{background:#11141b}.adminNav{height:84px;background:#151922}.adminBody{background:#11141b}.adminBody aside{background:#141820}.adminBody aside button.active,.adminBody aside button:hover{background:#1d222c}.adminContent{max-width:1350px;padding:55px}.adminHeader h1{font-size:64px}.adminEditor{background:#171b24;border-color:rgba(255,255,255,.12);padding:34px}.adminEditor h2{font-size:28px}.adminList article{background:#171b24;padding:16px 18px}.adminLogin{background:radial-gradient(circle at center,rgba(255,255,255,.06),transparent 35%),#11141b}.adminLogin h1{font-size:92px}.adminLogin .brandMark{width:90px;height:90px;border-radius:25px;margin-bottom:10px}.adminLogin .brandMark img{border-radius:23px}
+@media(max-width:900px){.studioHero{min-height:720px}.studioSection,.storySection,.workSection,.teamSection,.communitySection{padding-top:90px;padding-bottom:90px}.aboutSection{padding:90px 5vw}.adminContent{padding:30px}.adminHeader h1{font-size:48px}}
+@media(max-width:600px){.siteNav{height:76px}.brand{font-size:16px}.brandMark{width:34px;height:34px}.studioHero h1{font-size:clamp(64px,17vw,105px)}.heroInner>p{font-size:15px}.heroActions{gap:9px}.primaryBtn,.ghostBtn,.adminQuick{padding:14px 15px;font-size:9px}.statsBar{margin-top:-20px}.sectionIntro h2,.aboutCopy h2,.creatorSection h2,.acquisitionSection h2{font-size:58px}.aboutVisual{min-height:390px}.spiderBadge{width:160px;height:160px}.creatorSection,.acquisitionSection{padding:38px}.adminLogin h1{font-size:64px}}
