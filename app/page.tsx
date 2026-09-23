@@ -23,7 +23,7 @@ export default function Home(){
     <div className="heroPill"><span/> INDEPENDENT ROBLOX GAME STUDIO</div>
     <h1>WE BUILD<br/><span>EXPERIENCES.</span></h1>
     <p>Spider Studios creates original Roblox games, builds communities around them, and works with developers and creators to turn strong ideas into experiences players want to come back to.</p>
-    <div className="heroActions"><a className="primaryBtn" href="#games">EXPLORE OUR GAMES <Arrow/></a><Link className="ghostBtn" href="/careers">WORK WITH US <Arrow/></Link></div>
+    <div className="heroActions"><a className="primaryBtn" href="#games">EXPLORE OUR GAMES <Arrow/></a><Link className="ghostBtn" href="/careers">WORK WITH US <Arrow/></Link><Link className="adminQuick" href="/admin">STUDIO ADMIN ↗</Link></div>
    </div>
    <div className="heroBottom"><span>ROBLOX GAME DEVELOPMENT</span><span>INDEPENDENT STUDIO</span><span>BUILD · PLAY · GROW</span></div>
   </section>
@@ -36,7 +36,7 @@ export default function Home(){
   </section>
 
   <section id="about" className="aboutSection">
-   <div className="aboutVisual"><div className="spiderBadge">S<span>•</span>S</div></div>
+   <div className="aboutVisual"><div className="spiderBadge"><img src="https://cdn.discordapp.com/icons/1541030301336215562/4119cf6ca8318ba22c8882efb6e18505.webp?size=512" alt="Spider Studios logo" /></div></div>
    <div className="aboutCopy"><span className="sectionKicker">ABOUT SPIDER STUDIOS</span><h2>MORE THAN<br/><em>A GAME.</em></h2><p>Spider Studios is an independent Roblox game studio focused on creating, improving, publishing, and growing experiences for players around the world.</p><p>We work across gameplay programming, creative development, community building, creator relationships, and business opportunities. The goal is simple: make games people remember and build a studio where talented people can grow with them.</p><Link className="textLink" href="/about">LEARN ABOUT THE STUDIO <Arrow/></Link></div>
   </section>
 
