@@ -1,36 +1,14 @@
-const studio="Spider Studios";
-
+import {games} from "../data/games";
+const discord=[["Spider Studios","https://discord.gg/ghSzF5fcK"],["Spider Uncopylocked","https://discord.gg/ue2VP47Kn"]];
+const communities=[["YouTube","https://www.youtube.com/channel/UChHjRINwtNyjRS7VkWl2LHA"],["Strawberryini Studio","https://www.roblox.com/communities/486751351/Strawberryini-Studio#!/about"],["HypeX Games","https://www.roblox.com/communities/811389125/HypeX-Games#!/about"]];
 function Arrow(){return <span aria-hidden>↗</span>}
-
-export default function Home(){
-  return <main>
-    <nav className="nav">
-      <a className="brand" href="#">{studio}<span>.</span></a>
-      <div className="navlinks"><a href="#games">Games</a><a href="#about">About</a><a href="#contact">Contact</a></div>
-    </nav>
-
-    <section className="hero">
-      <div className="heroGrid"/><div className="heroGlow"/>
-      <p className="eyebrow">INDEPENDENT ROBLOX GAME STUDIO</p>
-      <h1>SPIDER<br/><em>STUDIOS.</em></h1>
-      <p className="heroText">We create memorable Roblox experiences with a focus on original ideas, strong visuals, and communities that keep coming back.</p>
-      <a className="button" href="#games">VIEW GAMES <Arrow/></a>
-    </section>
-
-    <section id="games" className="section">
-      <div className="sectionHead"><div><p className="eyebrow">SELECTED WORK</p><h2>GAMES</h2></div></div>
-      <div className="emptyState"><span>01</span><p>Games will appear here.</p></div>
-    </section>
-
-    <section id="about" className="about section">
-      <div><p className="eyebrow">ABOUT THE STUDIO</p><h2>BUILT TO<br/><em>STAND OUT.</em></h2></div>
-      <p>Spider Studios is an independent Roblox game studio building original experiences for players around the world.</p>
-    </section>
-
-    <footer id="contact">
-      <div><a className="brand" href="#">{studio}<span>.</span></a><p>Independent Roblox Game Studio</p></div>
-      <div className="footerRight"><a href="#games">GAMES <Arrow/></a><a href="#about">ABOUT <Arrow/></a></div>
-      <small>© {new Date().getFullYear()} Spider Studios</small>
-    </footer>
-  </main>
-}
+export default function Home(){const featured=games.filter(g=>g.featured);return <main>
+<nav className="nav"><a className="brand" href="#">SPIDER<span>STUDIOS</span></a><div className="navlinks"><a href="#games">Games</a><a href="#about">About</a><a href="#community">Community</a></div></nav>
+<section className="hero"><div className="heroGrid"/><div className="heroGlow"/><p className="eyebrow">INDEPENDENT ROBLOX GAME STUDIO</p><h1>WE BUILD<br/><em>GAMES.</em></h1><p className="heroText">Spider Studios creates Roblox experiences across obbies, survival, adventure, horror, and more.</p><a className="button" href="#games">EXPLORE GAMES <Arrow/></a></section>
+<section id="games" className="section"><div className="sectionHead"><div><p className="eyebrow">OUR GAMES</p><h2>PLAY NOW</h2></div><span className="count">{games.length} GAMES</span></div>
+{featured.length>0&&<div className="featured">{featured.map(g=><a className="featuredCard" href={g.url} target="_blank" rel="noreferrer" key={g.title}><img src={g.image} alt=""/><div className="overlay"><span className="tag">{g.tag} · FEATURED</span><h3>{g.title}</h3><p>{g.description}</p><b>PLAY ON ROBLOX <Arrow/></b></div></a>)}</div>}
+<div className="grid">{games.filter(g=>!g.featured).map(g=><a className="card" href={g.url} target="_blank" rel="noreferrer" key={g.title}><div className="thumb"><img src={g.image} alt=""/><span className="tag">{g.tag}</span><span className="cardArrow"><Arrow/></span></div><div className="cardBody"><h3>{g.title}</h3><p>{g.description}</p></div></a>)}</div></section>
+<section id="about" className="about section"><div><p className="eyebrow">ABOUT SPIDER STUDIOS</p><h2>BUILT FOR<br/><em>ROBLOX.</em></h2></div><p>Spider Studios is an independent Roblox game studio making original experiences for players around the world.</p></section>
+<section id="community" className="community section"><p className="eyebrow">JOIN THE COMMUNITY</p><h2>STAY<br/><em>CONNECTED.</em></h2><div className="links">{[["Discord",discord],["Other",communities]].map(([title,items])=><div key={title}><h3>{title}</h3>{items.map(([n,u])=><a href={u} target="_blank" rel="noreferrer" key={n}>{n}<Arrow/></a>)}</div>)}</div></section>
+<footer><div><a className="brand" href="#">SPIDER<span>STUDIOS</span></a><p>Independent Roblox Game Studio</p></div><small>© {new Date().getFullYear()} Spider Studios</small></footer>
+</main>}
