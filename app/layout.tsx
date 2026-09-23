@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Spider Studios",
   description: "Independent Roblox game studio.",
   icons: {
-    icon: spiderPfp,
+    icon: [{ url: spiderPfp, type: "image/webp" }],
     shortcut: spiderPfp,
     apple: spiderPfp,
   },
