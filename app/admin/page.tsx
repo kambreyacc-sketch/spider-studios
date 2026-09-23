@@ -1,5 +1,5 @@
 "use client";
-import {useEffect,useState} from "react";
+import {useEffect,useState,type FormEvent} from "react";
 import Link from "next/link";
 type Game={title:string;description:string;image:string;url:string;tag:string;featured?:boolean};
 type Staff={id:string;name:string;role:string;department:string;bio?:string;avatar_url?:string;roblox_url?:string;verified?:boolean};
@@ -9,7 +9,7 @@ export default function AdminPage(){
  const [person,setPerson]=useState<Staff>({id:"",name:"",role:"",department:"Development",bio:"",avatar_url:"",roblox_url:"",verified:false});
  const load=async()=>{const r=await fetch("/api/admin/data");if(r.ok){const d=await r.json();setGames(d.games);setStaff(d.staff);setLogged(true)}};
  useEffect(()=>{load()},[]);
- const login=async(e:React.FormEvent)=>{e.preventDefault();const r=await fetch("/api/admin/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({password})});if(r.ok){setLogged(true);setPassword("");load()}else setMessage("Wrong admin password.")};
+ const login=async(e:FormEvent)=>{e.preventDefault();const r=await fetch("/api/admin/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({password})});if(r.ok){setLogged(true);setPassword("");load()}else setMessage("Wrong admin password.")};
  const save=async(kind:string,data:any)=>{setMessage("Saving...");const r=await fetch("/api/admin/data",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({kind,data})});if(r.ok){setMessage("Saved. Vercel will redeploy.");setEditing(null);load()}else{const x=await r.json().catch(()=>({}));setMessage(x.error||"Could not save.")}};
  if(!logged)return <main className="adminShell"><div className="adminLogin"><div className="brandMark">S</div><span className="sectionKicker">SPIDER STUDIOS</span><h1>ADMIN<br/><em>PANEL.</em></h1><p>Private studio management.</p><form onSubmit={login}><input type="password" placeholder="Admin password" value={password} onChange={e=>setPassword(e.target.value)}/><button className="primaryBtn">ENTER DASHBOARD ↗</button></form>{message&&<small>{message}</small>}</div></main>;
  return <main className="adminShell"><nav className="adminNav"><Link className="brand" href="/"><span className="brandMark">S</span><span>SPIDER</span><b>STUDIOS</b></Link><span>ADMIN / PRIVATE</span></nav><div className="adminBody"><aside><button className={tab==="games"?"active":""} onClick={()=>{setTab("games");setEditing(null)}}>Games</button><button className={tab==="staff"?"active":""} onClick={()=>{setTab("staff");setEditing(null)}}>Team / Staff</button><Link href="/">View Site ↗</Link></aside><section className="adminContent"><div className="adminHeader"><div><span className="sectionKicker">CONTROL CENTER</span><h1>{tab==="games"?"GAMES":"TEAM"}</h1></div><span className="adminStatus">● PRIVATE</span></div>
