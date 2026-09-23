@@ -1,7 +1,7 @@
 import {cookies} from "next/headers";
 import {createHmac} from "crypto";
-import {games} from "../../../data/games";
-import {staff} from "../../../data/team";
+import {games} from "../../../../data/games";
+import {staff} from "../../../../data/team";
 function token(){return createHmac("sha256",process.env.ADMIN_SESSION_SECRET||"").update("spider-admin").digest("hex")}
 async function ok(){const c=await cookies();return !!process.env.ADMIN_SESSION_SECRET&&c.get("spider_admin")?.value===token()}
 async function githubPut(path:string,content:string,message:string){const token=process.env.GITHUB_TOKEN,repo=process.env.GITHUB_REPO||"kambreyacc-sketch/spider-studios";if(!token)throw new Error("GITHUB_TOKEN is not configured");const base="https://api.github.com/repos/"+repo+"/contents/"+path;const current=await fetch(base,{headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json"}});let sha;if(current.ok)sha=(await current.json()).sha;const body:any={message,content:Buffer.from(content).toString("base64"),branch:"main"};if(sha)body.sha=sha;const r=await fetch(base,{method:"PUT",headers:{Authorization:"Bearer "+token,Accept:"application/vnd.github+json","Content-Type":"application/json"},body:JSON.stringify(body)});if(!r.ok)throw new Error(await r.text())}
