@@ -16,6 +16,8 @@ export default function Home(){
   <nav className="siteNav"><Link className="brand" href="/"><Brand/><span>SPIDER</span><b>STUDIOS</b></Link><div className="navlinks"><a href="#games">Games</a><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><a href="#community">Community</a><Link href="/admin">Admin</Link></div></nav>
 
   <section className="studioHero">
+   <video className="heroVideo" autoPlay muted loop playsInline preload="auto" aria-hidden="true"><source src="https://dobig.com/banner.webm" type="video/webm"/></video>
+   <div className="heroVideoShade"/>
    <div className="heroOrb heroOrbOne"/><div className="heroOrb heroOrbTwo"/><div className="heroNoise"/>
    <div className="heroTicker"><div className="heroTickerTrack">{ticker.map((g,i)=><div className="heroTickerItem" key={i}>{g.title}<b>SPIDER STUDIOS</b>✦</div>)}</div></div>
    <div className="heroInner">
