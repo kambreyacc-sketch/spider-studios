@@ -14,8 +14,8 @@ export default function Home(){
  const featured=games.filter(g=>g.featured);
  return <main>
   <nav className="siteNav">
-   <Link className="brand" href="/"><span className="brandMark">S</span><span>SPIDER</span><b>STUDIOS</b></Link>
-   <div className="navlinks"><a href="#games">Games</a><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><a href="#community">Community</a></div>
+   <Link className="brand" href="/"><span className="brandMark"><img src="https://cdn.discordapp.com/icons/1541030301336215562/4119cf6ca8318ba22c8882efb6e18505.webp?size=128" alt="Spider Studios" /></span><span>SPIDER</span><b>STUDIOS</b></Link>
+   <div className="navlinks"><a href="#games">Games</a><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><a href="#community">Community</a><Link href="/admin">Admin</Link></div>
   </nav>
   <section className="studioHero">
    <div className="heroOrb heroOrbOne"/><div className="heroOrb heroOrbTwo"/><div className="heroNoise"/>
@@ -48,9 +48,9 @@ export default function Home(){
    <div className="serviceGrid">{[["01","GAME DEVELOPMENT","Gameplay systems, Roblox Luau, progression, optimization, and live updates."],["02","CREATIVE","Game concepts, UI direction, presentation, thumbnails, and player-facing experiences."],["03","COMMUNITY","Discord, creators, player feedback, announcements, and community growth."],["04","PUBLISHING & GROWTH","Launch strategy, updates, partnerships, monetization, and long-term game development."]].map(([n,t,d])=><article className="serviceCard" key={n}><span>{n}</span><h3>{t}</h3><p>{d}</p><Arrow/></article>)}</div>
   </section>
 
-  <section className="teamSection"><div className="sectionIntro"><div><span className="sectionKicker">THE TEAM</span><h2>PEOPLE<br/><em>BEHIND IT.</em></h2></div><p>Spider Studios is built around different skills working together. Public staff names and headcount have not been supplied yet, so the site shows the actual working groups instead of inventing people.</p></div>
+  <section className="teamSection" id="team"><div className="sectionIntro"><div><span className="sectionKicker">MEET OUR TEAM</span><h2>PEOPLE<br/><em>BEHIND IT.</em></h2></div><p>Meet the people and working groups behind Spider Studios. Development, creative, community, and studio operations all work together to build and grow our Roblox experiences.</p></div>
    <div className="teamGrid">{[["PROGRAMMING","Roblox Luau developers","Gameplay, systems, performance, and technical foundations."],["CREATIVE","Designers & creators","UI, visuals, concepts, content, and player experience."],["COMMUNITY","Community staff & creators","Discord, social content, feedback, and player relationships."],["OPERATIONS","Studio & business","Partnerships, publishing, acquisitions, and studio operations."]].map(([a,b,c])=><article key={a}><span>{a}</span><h3>{b}</h3><p>{c}</p></article>)}</div>
-   <Link className="primaryBtn" href="/careers">JOIN THE TEAM <Arrow/></Link>
+   <div className="heroActions"><Link className="primaryBtn" href="/team">MEET THE TEAM <Arrow/></Link><Link className="ghostBtn" href="/careers">JOIN THE TEAM <Arrow/></Link></div>
   </section>
 
   <section className="creatorSection"><div className="creatorIcon">✦</div><span className="sectionKicker">CREATOR PROGRAM</span><h2>CREATE WITH<br/><em>SPIDER.</em></h2><p>Are you a Roblox YouTuber, TikTok creator, or streamer? Create content about Spider Studios games, join our community, and get news about upcoming releases and special events.</p><p className="fine">We don't promise free items, payment, early access, or creator rewards unless explicitly offered.</p><Link className="primaryBtn" href="/contact?category=creator">CREATOR INQUIRIES <Arrow/></Link></section>
@@ -64,6 +64,6 @@ export default function Home(){
  {communities.map(([name,url,img])=><a className="communityCard" key={name} href={url} target="_blank" rel="noreferrer"><img src={img} alt=""/><div><small>NETWORK</small><h3>{name}</h3><span>VISIT <Arrow/></span></div></a>)}
  </div>
   </section>
-  <footer className="siteFooter"><div><Link className="brand" href="/"><span className="brandMark">S</span><span>SPIDER</span><b>STUDIOS</b></Link><p>Independent Roblox Game Studio</p></div><div><Link href="/about">About</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link></div><small>© {new Date().getFullYear()} Spider Studios</small></footer>
+  <footer className="siteFooter"><div><Link className="brand" href="/"><span className="brandMark">S</span><span>SPIDER</span><b>STUDIOS</b></Link><p>Independent Roblox Game Studio</p></div><div><Link href="/about">About</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><Link href="/admin">Admin</Link></div><small>© {new Date().getFullYear()} Spider Studios</small></footer>
  </main>
 }
