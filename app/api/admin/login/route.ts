@@ -1,0 +1,4 @@
+import {cookies} from "next/headers";
+import {createHmac} from "crypto";
+export async function POST(req:Request){const {password}=await req.json().catch(()=>({}));const expected=process.env.ADMIN_PASSWORD,secret=process.env.ADMIN_SESSION_SECRET;if(!expected||!secret||password!==expected)return Response.json({error:"Invalid password"},{status:401});const value=createHmac("sha256",secret).update("spider-admin").digest("hex");const c=await cookies();c.set("spider_admin",value,{httpOnly:true,secure:true,sameSite:"lax",path:"/",maxAge:604800});return Response.json({ok:true})}
+export async function DELETE(){const c=await cookies();c.delete("spider_admin");return Response.json({ok:true})}
