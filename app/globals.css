@@ -50,7 +50,7 @@
 @media(max-width:1000px){.staffGrid{grid-template-columns:1fr 1fr}}@media(max-width:650px){.staffGrid{grid-template-columns:1fr}.staffCard{min-height:0}}
 
 
-/* HERO VIDEO BACKGROUND */
+/* Do Big hero background */
 .heroVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.86;filter:saturate(.78) brightness(.7)}
 .heroVideoShade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,9,9,.78),rgba(9,9,9,.3) 55%,rgba(9,9,9,.68)),linear-gradient(180deg,rgba(9,9,9,.12),rgba(9,9,9,.86))}
 .studioHero .heroNoise,.studioHero .heroOrb,.studioHero .heroTicker{z-index:2}.studioHero .heroInner,.studioHero .heroBottom{z-index:5}
