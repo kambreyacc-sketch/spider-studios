@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { games } from "../data/games";
 import SpiderSupport from "./components/SpiderSupport";
+import GameBrowser from "./components/GameBrowser";
+import MobileNav from "./components/MobileNav";
 
 const discord=[["Spider Studios","https://discord.gg/ghSzF5fcK"],["Spider Uncopylocked","https://discord.gg/ue2VP47Kn"]];
 const communities=[
@@ -16,7 +18,7 @@ export default function Home(){
  const marqueeGames=[...games,...games,...games];
  const marquee=(reverse=false,large=false)=><section className={"gameMarquee "+(reverse?"reverse ":"")+(large?"large":"")} aria-label="Roblox game showcase"><div className="gameMarqueeFade"/><div className="gameMarqueeTrack">{marqueeGames.map((g,i)=><a className="marqueeGame" href={g.url} target="_blank" rel="noreferrer" key={g.title+"-"+i}><img src={g.image} alt="" loading="eager"/><div><strong>{g.title}</strong><span>PLAY ON ROBLOX ↗</span></div></a>)}</div></section>;
  return <main>
-  <nav className="siteNav"><Link className="brand" href="/"><Brand/><span>SPIDER</span><b>STUDIOS</b></Link><div className="navlinks"><a href="#games">Games</a><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><Link href="/contact">Contact</Link><a href="#community">Community</a><Link href="/admin">Admin</Link></div></nav>
+  <nav className="siteNav"><Link className="brand" href="/"><Brand/><span>SPIDER</span><b>STUDIOS</b></Link><div className="navlinks"><a href="#games">Games</a><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><Link href="/contact">Contact</Link><a href="#community">Community</a><Link href="/admin">Admin</Link></div><MobileNav links={[{label:"Games",href:"#games"},{label:"About",href:"/about"},{label:"Team",href:"/team"},{label:"Careers",href:"/careers"},{label:"Sell Your Game",href:"/sell-game"},{label:"Contact",href:"/contact"},{label:"Community",href:"#community"},{label:"Admin",href:"/admin"}]}/></nav>
 
   <section className="studioHero">
    <video className="heroVideo" autoPlay muted loop playsInline preload="auto" aria-hidden="true"><source src="https://dobig.com/banner.webm" type="video/webm"/></video>
@@ -38,8 +40,7 @@ export default function Home(){
 
   <section id="games" className="studioSection">
    <div className="sectionIntro"><div><span className="sectionKicker">OUR GAMES</span><h2>MADE TO<br/><em>BE PLAYED.</em></h2></div><p>From obbies and survival games to horror and adventure, our portfolio is built around ideas with room to grow.</p></div>
-   <div className="featuredGrid">{featured.map(game=><a className="bigGameCard" href={game.url} target="_blank" rel="noreferrer" key={game.title}><img src={game.image} alt=""/><div className="gameShade"/><div className="bigGameInfo"><span className="gameTag">{game.tag} · FEATURED</span><h3>{game.title}</h3><p>{game.description}</p><b>PLAY ON ROBLOX <Arrow/></b></div></a>)}</div>
-   <div className="gameGrid">{games.filter(g=>!g.featured).map(game=><a className="gameCard" href={game.url} target="_blank" rel="noreferrer" key={game.title}><div className="gameImage"><img src={game.image} alt=""/><span className="gameTag">{game.tag}</span><span className="roundArrow"><Arrow/></span></div><div className="gameCardInfo"><h3>{game.title}</h3><p>{game.description}</p><span>VIEW GAME <Arrow/></span></div></a>)}</div>
+   <GameBrowser games={games}/>
   </section>
 
   <section className="saleSection"><div><span className="sectionKicker">GAME ACQUISITIONS</span><h2>GAMES<br/><em>FOR SALE.</em></h2><p>Spider Studios is open to full game acquisitions, partial ownership, investments, and partnerships. Current listing:</p></div><div className="saleGrid">{games.filter(g=>g.sale).map(game=><a className="saleCard" href={game.url} target="_blank" rel="noreferrer" key={game.title}><img src={game.image} alt=""/><div><span className="gameTag">FOR SALE</span><h3>{game.title}</h3><p>{game.description}</p><b>VIEW GAME <Arrow/></b></div></a>)}</div></section>
