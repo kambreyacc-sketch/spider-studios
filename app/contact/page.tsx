@@ -10,8 +10,9 @@ export default function ContactPage(){
     const form=e.currentTarget;
     const data=new FormData(form);
     data.append("_subject","Spider Studios Website Contact");
+    data.append("_replyto",String(data.get("email")||""));
     data.append("_captcha","false");
-    data.append("_template","table");
+    data.append("_template","box");
     try{
       const res=await fetch("https://formsubmit.co/ajax/"+EMAIL,{method:"POST",body:data,headers:{Accept:"application/json"}});
       if(!res.ok) throw new Error("send failed");
