@@ -9,4 +9,5 @@ Update `data/games.ts` to add or remove games. Each game has a title, descriptio
 ```bash
 npm install
 npm run dev
-``
+```
+
