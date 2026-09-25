@@ -1,2 +1,11 @@
 export type StaffMember={id:string;name:string;role:string;department:string;bio?:string;avatar_url?:string;avatar_source?:string;discord_avatar_url?:string;discord_id?:string;verified?:boolean;roblox_url?:string;social_links?:{platform:string;url:string}[]};
-export const staff:StaffMember[]=[];
+
+export const staff:StaffMember[]=[
+ {id:"real-vectar",name:"Real vectar",role:"Owner · Developer",department:"Leadership",bio:"Roblox Developer & Content Creator. Owner of Spider Uncopylocked — 30k+ Discord community.",avatar_source:"discord",discord_id:"1404024989208019086",discord_avatar_url:"https://cdn.discordapp.com/avatars/1404024989208019086/fd13191fea1ea9cd3c361454aa42000e.webp?size=1024",verified:true},
+ {id:"alfiec43",name:"alfieC43",role:"Co Owner · Developer · Investor",department:"Leadership",bio:"Roblox Game Developer/Creator/Investor. Contributed to over 72M visits.",avatar_url:"https://cdn.discordapp.com/embed/avatars/0.png",verified:true},
+ {id:"breazy",name:"Breazy",role:"Manager · Lead Developer · Marketing",department:"Leadership",bio:"UEFN Developer ✦ Builder ✦ Environment & VFX Artist for @Steal the Brainrot + many other hit Fortnite maps over 15B+ plays.",avatar_source:"discord",discord_id:"1337293227820322878",discord_avatar_url:"https://images-ext-1.discordapp.net/external/jkrknaTeajuEdmt7JEGqOCd6Ny1PZ-P9lSOc2Nxf1rk/%3Fsize%3D512/https/cdn.discordapp.com/avatars/1337293227820322878/92116a426b17561c7c6c91c8c6bec1e8.png?format=webp&quality=lossless",verified:true},
+ {id:"kasthm",name:"kasthm",role:"Developer Manager · Developer",department:"Development",bio:"Over 50k Robux earned this year through different projects.",avatar_source:"discord",discord_id:"1123920661061042286",discord_avatar_url:"https://cdn.discordapp.com/avatars/1123920661061042286/0df8b6c4196b737874eac112241a1e60.webp?size=1024",verified:true},
+ {id:"nexus-kipp",name:"nexus kipp",role:"Community Moderator",department:"Community",avatar_source:"discord",discord_id:"1481542337233682476",avatar_url:"https://cdn.discordapp.com/embed/avatars/0.png"},
+ {id:"batcat",name:"batcat",role:"Community Moderator",department:"Community",avatar_source:"discord",discord_id:"1251628397793382522",discord_avatar_url:"https://cdn.discordapp.com/avatars/1251628397793382522/1a7bd465b5da48665f0082faeac11349.webp?size=1024"},
+ {id:"dream",name:"𝔡𝔯𝔢𝔞𝔪",role:"Admin",department:"Community",avatar_source:"discord",discord_id:"1319362421554417666",discord_avatar_url:"https://cdn.discordapp.com/avatars/1319362421554417666/e49c415a21efb723ed7840814e256a74.webp?size=1024"}
+];
