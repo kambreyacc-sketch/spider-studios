@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
+import MobileNav from "../components/MobileNav";
 
 const EMAIL="Spiderstudios137483@gmail.com";
 
 export default function ContactPage(){
  return <main className="subpage">
-  <nav className="siteNav"><Link className="brand" href="/"><span className="brandMark"><img src="https://cdn.discordapp.com/icons/1541030301336215562/4119cf6ca8318ba22c8882efb6e18505.webp?size=512" alt="Spider Studios"/></span><span>SPIDER</span><b>STUDIOS</b></Link><div className="navlinks"><Link href="/#games">Games</Link><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><Link href="/contact">Contact</Link><Link href="/admin">Admin</Link></div></nav>
+  <nav className="siteNav"><Link className="brand" href="/"><span className="brandMark"><img src="https://cdn.discordapp.com/icons/1541030301336215562/4119cf6ca8318ba22c8882efb6e18505.webp?size=512" alt="Spider Studios"/></span><span>SPIDER</span><b>STUDIOS</b></Link><div className="navlinks"><Link href="/#games">Games</Link><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><Link href="/contact">Contact</Link><Link href="/admin">Admin</Link></div><MobileNav links={[{label:"Games",href:"/#games"},{label:"About",href:"/about"},{label:"Team",href:"/team"},{label:"Careers",href:"/careers"},{label:"Sell Your Game",href:"/sell-game"},{label:"Contact",href:"/contact"},{label:"Admin",href:"/admin"}]}/></nav>
   <header className="pageHero"><div className="heroPill"><span/> CONTACT SPIDER STUDIOS</div><h1>LET'S<br/><em>TALK.</em></h1><p>Partnerships, creator questions, business opportunities, game acquisitions, hiring, and general studio inquiries.</p><a className="primaryBtn" href={"mailto:"+EMAIL}>EMAIL US <span>↗</span></a><p className="contactEmail"><a href={"mailto:"+EMAIL}>{EMAIL}</a></p></header>
   <form className="formWrap" action={"https://formsubmit.co/"+EMAIL} method="POST">
    <input type="hidden" name="_subject" value="Spider Studios Website Contact"/>
