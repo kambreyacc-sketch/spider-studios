@@ -1,3 +1,41 @@
 import {NextResponse} from "next/server";
-const WEBHOOK=process.env.DISCORD_APPLICATION_WEBHOOK_URL;
-export async function POST(req:Request){if(!WEBHOOK)return NextResponse.json({error:"Webhook not configured"},{status:500});const d=await req.json();const required=["discord","age","role","portfolio","experience","shipped","skills","problem","teamwork","why","availability","timezone"];if(required.some(k=>!String(d[k]||"").trim()))return NextResponse.json({error:"Missing fields"},{status:400});const clean=(v:any)=>String(v||"").slice(0,1000);const fields=[["Discord",d.discord],["Age",d.age],["Role",d.role],["Timezone",d.timezone],["Availability",d.availability],["Start Date",d.startDate||"Not specified"],["Portfolio",d.portfolio],["Experience",d.experience],["Shipped",d.shipped],["Technical Skills",d.skills],["Hardest Problem",d.problem],["Team Experience",d.teamwork],["Why Spider Studios",d.why],["Compensation",d.compensation||"Not specified"],["Anything Else",d.anything||"None"]].map(([name,value])=>({name,value:clean(value),inline:false}));const payload={content:"@here",allowed_mentions:{parse:["everyone"]},embeds:[{title:"🕷️ New Spider Studios Developer Application",description:"Application for **"+clean(d.role)+"**",color:16777215,fields,footer:{text:"Spider Studios • Developer Applications"},timestamp:new Date().toISOString()}]};const r=await fetch(WEBHOOK,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(payload)});if(!r.ok)return NextResponse.json({error:"Discord webhook failed"},{status:502});return NextResponse.json({ok:true})}
+
+const EMAIL=["Spiderstudios137483","gmail.com"].join("@");
+
+export async function POST(req:Request){
+  try{
+    const d=await req.json();
+    const required=["discord","age","role","portfolio","experience","shipped","skills","problem","teamwork","why","availability","timezone"];
+    if(required.some(k=>!String(d[k]||"").trim())) return NextResponse.json({error:"Missing fields"},{status:400});
+    const clean=(v:any)=>String(v??"").trim();
+    const form=new URLSearchParams();
+    form.set("_subject","Spider Studios Developer Application");
+    form.set("_captcha","false");
+    form.set("_template","box");
+    if(clean(d.email)) form.set("_replyto",clean(d.email));
+    const fields=[
+      ["Discord Username",d.discord],["Email",d.email||"Not provided"],["Age",d.age],["Role",d.role],
+      ["Timezone",d.timezone],["Availability",d.availability],["Start Date",d.startDate||"Not specified"],
+      ["Portfolio / Examples",d.portfolio],["Development Experience",d.experience],
+      ["What Have You Actually Shipped?",d.shipped],["Technical Skills",d.skills],
+      ["Hardest Problem You've Solved",d.problem],["Team Experience",d.teamwork],
+      ["Why Spider Studios?",d.why],["Compensation Expectations",d.compensation||"Not specified"],
+      ["Anything Else",d.anything||"None"]
+    ] as const;
+    for(const [name,value] of fields) form.set(name,clean(value));
+    const r=await fetch("https://formsubmit.co/ajax/"+EMAIL,{
+      method:"POST",
+      headers:{"content-type":"application/x-www-form-urlencoded","accept":"application/json"},
+      body:form.toString()
+    });
+    if(!r.ok){
+      const details=await r.text().catch(()=>"");
+      console.error("Application email failed",r.status,details);
+      return NextResponse.json({error:"Application email failed"},{status:502});
+    }
+    return NextResponse.json({ok:true});
+  }catch(error){
+    console.error("Application submission failed",error);
+    return NextResponse.json({error:"Invalid submission"},{status:400});
+  }
+}
