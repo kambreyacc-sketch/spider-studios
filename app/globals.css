@@ -85,3 +85,44 @@
 /* production cache refresh */
 
 .footerEmail{display:block;margin-top:8px;color:#9aa0aa;font-size:12px;text-decoration:none;letter-spacing:.02em}.footerEmail:hover{color:#fff;text-decoration:underline}
+
+/* Developer-first application UI */
+.applyPage{background:#080a0d;color:#e8edf2}
+.applyPage .siteNav{background:rgba(8,10,13,.94);border-color:#20252b}
+.applyHero{max-width:1120px;margin:0 auto;padding:105px 28px 70px;border-bottom:1px solid #20252b}
+.devBadge{display:inline-flex;align-items:center;gap:9px;color:#7f8b97;font:800 10px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.13em}
+.statusDot{width:7px;height:7px;border-radius:50%;background:#7ee787;box-shadow:0 0 12px rgba(126,231,135,.45)}
+.applyHero h1{font-size:clamp(70px,10vw,140px);line-height:.82;letter-spacing:-.08em;margin:22px 0}
+.applyHero h1 em{font-style:normal;color:#68727d}
+.applyHero>p{max-width:690px;color:#89939e;font-size:15px;line-height:1.8;margin:0 0 24px}
+.codeLine{display:inline-block;border:1px solid #242b32;background:#0d1116;border-radius:7px;padding:10px 13px;color:#aeb8c2;font:12px ui-monospace,SFMono-Regular,Menlo,monospace}
+.codeLine span{color:#79c0ff}.codeLine b{color:#8b949e}.codeLine i{color:#a5d6ff;font-style:normal}
+.applyForm{max-width:1120px;margin:38px auto 110px;padding:0 28px}
+.applyFormTop,.applyFooter{display:flex;justify-content:space-between;align-items:center;gap:20px;border:1px solid #20262d;background:#0d1116;padding:14px 16px;color:#9ba6b1;font:800 9px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em}
+.applyFormTop small{color:#59636e;font:11px Inter,Arial,sans-serif;letter-spacing:0}
+.applyForm>.formGrid{border:1px solid #20262d;border-top:0;padding:28px;background:#0a0d11;gap:20px}
+.applyForm label{color:#7d8995!important;font:800 9px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace!important;letter-spacing:.12em!important}
+.applyForm input,.applyForm textarea{background:#0d1116!important;border:1px solid #252d35!important;border-radius:6px!important;color:#edf2f7!important;padding:13px!important}
+.applyForm input::placeholder,.applyForm textarea::placeholder{color:#4f5964}
+.applyForm input:focus,.applyForm textarea:focus{border-color:#5f6b77!important;box-shadow:0 0 0 2px rgba(95,107,119,.12)}
+.rolePicker{position:relative}
+.roleTrigger{width:100%;min-height:47px;padding:13px;background:#0d1116;border:1px solid #252d35;border-radius:6px;color:#5d6873;display:flex;align-items:center;justify-content:space-between;text-align:left;cursor:pointer}
+.roleTrigger.selected{color:#edf2f7}
+.roleTrigger:hover,.roleTrigger[aria-expanded="true"]{border-color:#5f6b77}
+.roleTrigger b{font:14px ui-monospace,SFMono-Regular,Menlo,monospace;color:#77828d}
+.roleMenu{position:absolute;left:0;right:0;top:calc(100% + 7px);z-index:80;max-height:310px;overflow:auto;background:#0b0f13;border:1px solid #303943;border-radius:7px;box-shadow:0 18px 45px rgba(0,0,0,.55);padding:5px}
+.roleMenu button{width:100%;border:0;background:transparent;color:#aab4be;padding:11px 10px;display:flex;align-items:center;justify-content:space-between;text-align:left;border-radius:4px;cursor:pointer;font:12px Inter,Arial,sans-serif}
+.roleMenu button:hover,.roleMenu button.active{background:#171d24;color:#fff}
+.roleMenu button b{font:11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#65717c}
+.roleMenu button.active b{color:#7ee787}
+.applyFooter{border-top:0}
+.applyFooter .submitBtn{margin:0;min-width:220px}
+.applySuccess{max-width:760px;margin:100px auto;padding:55px 28px;text-align:center;border:1px solid #252d35;background:#0d1116;border-radius:10px}
+.applySuccess .successIcon{border-radius:10px;background:#e8edf2}
+.applySuccess h2{font-size:44px;letter-spacing:-.06em;margin:18px 0 8px}
+.applySuccess p{color:#7f8a95;line-height:1.8;margin:0 auto 26px;max-width:520px}
+@media(max-width:700px){
+ .applyHero{padding:75px 20px 50px}.applyForm{padding:0 15px}.applyForm>.formGrid{padding:18px}
+ .applyFooter{align-items:flex-start;flex-direction:column}.applyFooter .submitBtn{width:100%}
+ .applyHero h1{font-size:72px}
+}
