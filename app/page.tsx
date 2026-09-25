@@ -14,7 +14,7 @@ export default function Home(){
  const featured=games.filter(g=>g.featured);
  const ticker=[...games,...games,...games];
  const marqueeGames=[...games,...games,...games];
- const marquee=(reverse=false,large=false)=><section className={"gameMarquee "+(reverse?"reverse ":"")+(large?"large":"")} aria-label="Roblox game showcase"><div className="gameMarqueeFade"/><div className="gameMarqueeTrack">{marqueeGames.map((g,i)=><a className="marqueeGame" href={g.url} target="_blank" rel="noreferrer" key={g.title+"-"+i}><img src={g.image} alt="" loading="lazy"/><div><strong>{g.title}</strong><span>PLAY ON ROBLOX ↗</span></div></a>)}</div></section>;
+ const marquee=(reverse=false,large=false)=><section className={"gameMarquee "+(reverse?"reverse ":"")+(large?"large":"")} aria-label="Roblox game showcase"><div className="gameMarqueeFade"/><div className="gameMarqueeTrack">{marqueeGames.map((g,i)=><a className="marqueeGame" href={g.url} target="_blank" rel="noreferrer" key={g.title+"-"+i}><img src={g.image} alt="" loading="eager"/><div><strong>{g.title}</strong><span>PLAY ON ROBLOX ↗</span></div></a>)}</div></section>;
  return <main>
   <nav className="siteNav"><Link className="brand" href="/"><Brand/><span>SPIDER</span><b>STUDIOS</b></Link><div className="navlinks"><a href="#games">Games</a><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><a href="#community">Community</a><Link href="/admin">Admin</Link></div></nav>
 
