@@ -1,16 +1,12 @@
 "use client";
 import Link from "next/link";
-import {useSearchParams} from "next/navigation";
 
 const EMAIL="Spiderstudios137483@gmail.com";
 
 export default function ContactPage(){
- const params=useSearchParams();
- const sent=params.get("sent")==="1";
  return <main className="subpage">
   <nav className="siteNav"><Link className="brand" href="/"><span className="brandMark"><img src="https://cdn.discordapp.com/icons/1541030301336215562/4119cf6ca8318ba22c8882efb6e18505.webp?size=512" alt="Spider Studios"/></span><span>SPIDER</span><b>STUDIOS</b></Link><div className="navlinks"><Link href="/#games">Games</Link><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><Link href="/contact">Contact</Link><Link href="/admin">Admin</Link></div></nav>
   <header className="pageHero"><div className="heroPill"><span/> CONTACT SPIDER STUDIOS</div><h1>LET'S<br/><em>TALK.</em></h1><p>Partnerships, creator questions, business opportunities, game acquisitions, hiring, and general studio inquiries.</p><a className="primaryBtn" href={"mailto:"+EMAIL}>EMAIL US <span>↗</span></a><p className="contactEmail"><a href={"mailto:"+EMAIL}>{EMAIL}</a></p></header>
-  {sent?<section className="formWrap success"><div className="successIcon">✓</div><h2>MESSAGE SENT</h2><p>Your message was submitted to Spider Studios. Check your sent copy and spam/junk folders if you don't see a reply.</p><Link className="primaryBtn" href="/">BACK HOME <span>↗</span></Link></section>:
   <form className="formWrap" action={"https://formsubmit.co/"+EMAIL} method="POST">
    <input type="hidden" name="_subject" value="Spider Studios Website Contact"/>
    <input type="hidden" name="_captcha" value="false"/>
