@@ -11,7 +11,7 @@ export default function ContactPage(){
    <input type="hidden" name="_subject" value="Spider Studios Website Contact"/>
    <input type="hidden" name="_captcha" value="false"/>
    <input type="hidden" name="_template" value="box"/>
-   <input type="hidden" name="_next" value="https://spider-studios-hq.vercel.app/contact?sent=1"/>
+   <input type="hidden" name="_next" value="https://spider-studios-hq.vercel.app/contact/sent"/>
    <div className="formGrid">
     <label>NAME<input required name="name" placeholder="Your name"/></label>
     <label>EMAIL<input required type="email" name="_replyto" placeholder="you@example.com"/></label>
@@ -19,7 +19,7 @@ export default function ContactPage(){
     <label className="full">MESSAGE<textarea required rows={8} name="message" placeholder="Tell us what you need..."/></label>
    </div>
    <button className="primaryBtn submitBtn" type="submit">SEND MESSAGE <span>↗</span></button>
-  </form>}
+  </form>
   <section className="contactDirect"><span className="sectionKicker">DIRECT CONTACT</span><h2>SPIDER STUDIOS<br/><em>EMAIL.</em></h2><a className="primaryBtn" href={"mailto:"+EMAIL}>{EMAIL} <span>↗</span></a></section>
   <footer className="siteFooter"><Link className="brand" href="/"><span className="brandMark"><img src="https://cdn.discordapp.com/icons/1541030301336215562/4119cf6ca8318ba22c8882efb6e18505.webp?size=512" alt="Spider Studios"/></span><span>SPIDER</span><b>STUDIOS</b></Link><a className="footerEmail" href={"mailto:"+EMAIL}>{EMAIL}</a><small>© {new Date().getFullYear()} Spider Studios</small></footer>
  </main>
