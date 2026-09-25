@@ -2,16 +2,23 @@
 import Link from "next/link";
 import {useSearchParams} from "next/navigation";
 import {FormEvent,useState} from "react";
+const EMAIL="Spiderstudios137483@gmail.com";
 const roles=["Scripter / Roblox Luau Developer","Roblox Developer","Backend Developer","Frontend / Full-Stack Developer","Map Builder","3D Modeler","UI/UX Designer","VFX Artist","Animator","Game Designer / Concept Developer","Sound Designer","QA Tester","Community Manager","Marketing / Growth","Discord Developer","Game Analyst","General Application"];
 export default function ApplyForm(){
  const params=useSearchParams();
  const [status,setStatus]=useState("idle");
  async function submit(e:FormEvent<HTMLFormElement>){
   e.preventDefault();setStatus("sending");
+  const form=e.currentTarget;
+  const data=new FormData(form);
+  data.append("_subject","Spider Studios Developer Application");
+  data.append("_replyto",String(data.get("email")||""));
+  data.append("_captcha","false");
+  data.append("_template","box");
   try{
-   const r=await fetch("/api/applications",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(e.currentTarget).entries()))});
+   const r=await fetch("https://formsubmit.co/ajax/"+EMAIL,{method:"POST",body:data,headers:{Accept:"application/json"}});
    if(!r.ok)throw new Error();
-   setStatus("success");e.currentTarget.reset()
+   setStatus("success");form.reset();
   }catch{setStatus("error")}
  }
  if(status==="success")return <main className="subpage"><section className="formWrap success"><div className="successIcon">✓</div><h2>APPLICATION SENT.</h2><p>Your application has been sent to the Spider Studios team.</p><Link className="primaryBtn" href="/careers">BACK TO CAREERS ↗</Link></section></main>;
@@ -37,7 +44,7 @@ export default function ApplyForm(){
     <label className="full">ANYTHING ELSE?<textarea name="anything"/></label>
     <label className="full">COMPENSATION EXPECTATIONS<input name="compensation"/></label>
    </div>
-   {status==="error"&&<p style={{color:"#aaa"}}>Could not send application. Please try again.</p>}
+   {status==="error"&&<p className="formError">Could not send application. Please try again.</p>}
    <button className="primaryBtn submitBtn" disabled={status==="sending"}>{status==="sending"?"SENDING...":"SUBMIT APPLICATION"} ↗</button>
   </form>
  </main>
