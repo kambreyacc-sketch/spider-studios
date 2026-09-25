@@ -30,13 +30,15 @@ export default function Home(){
    <div className="heroBottom"><span>ROBLOX GAME DEVELOPMENT</span><span>INDEPENDENT STUDIO</span><span>BUILD · PLAY · GROW</span></div>
   </section>
 
-  <section className="statsBar"><div><strong>{games.length}+</strong><span>LIVE PROJECTS</span></div><div><strong>ROBLOX</strong><span>PRIMARY PLATFORM</span></div><div><strong>24/7</strong><span>COMMUNITY FOCUS</span></div><div><strong>01</strong><span>STUDIO MISSION</span></div></section>
+  <section className="statsBar"><div><strong>{games.filter(g=>!g.sale).length}+</strong><span>LIVE PROJECTS</span></div><div><strong>ROBLOX</strong><span>PRIMARY PLATFORM</span></div><div><strong>24/7</strong><span>COMMUNITY FOCUS</span></div><div><strong>01</strong><span>STUDIO MISSION</span></div></section>
 
   <section id="games" className="studioSection">
    <div className="sectionIntro"><div><span className="sectionKicker">OUR GAMES</span><h2>MADE TO<br/><em>BE PLAYED.</em></h2></div><p>From obbies and survival games to horror and adventure, our portfolio is built around ideas with room to grow.</p></div>
    <div className="featuredGrid">{featured.map(game=><a className="bigGameCard" href={game.url} target="_blank" rel="noreferrer" key={game.title}><img src={game.image} alt=""/><div className="gameShade"/><div className="bigGameInfo"><span className="gameTag">{game.tag} · FEATURED</span><h3>{game.title}</h3><p>{game.description}</p><b>PLAY ON ROBLOX <Arrow/></b></div></a>)}</div>
    <div className="gameGrid">{games.filter(g=>!g.featured).map(game=><a className="gameCard" href={game.url} target="_blank" rel="noreferrer" key={game.title}><div className="gameImage"><img src={game.image} alt=""/><span className="gameTag">{game.tag}</span><span className="roundArrow"><Arrow/></span></div><div className="gameCardInfo"><h3>{game.title}</h3><p>{game.description}</p><span>VIEW GAME <Arrow/></span></div></a>)}</div>
   </section>
+
+  <section className="saleSection"><div><span className="sectionKicker">GAME ACQUISITIONS</span><h2>GAMES<br/><em>FOR SALE.</em></h2><p>Spider Studios is open to full game acquisitions, partial ownership, investments, and partnerships. Current listing:</p></div><div className="saleGrid">{games.filter(g=>g.sale).map(game=><a className="saleCard" href={game.url} target="_blank" rel="noreferrer" key={game.title}><img src={game.image} alt=""/><div><span className="gameTag">FOR SALE</span><h3>{game.title}</h3><p>{game.description}</p><b>VIEW GAME <Arrow/></b></div></a>)}</div></section>
 
   <section id="about" className="aboutSection"><div className="aboutVisual"><div className="spiderBadge"><img src={logo} alt="Spider Studios logo"/></div></div><div className="aboutCopy"><span className="sectionKicker">ABOUT SPIDER STUDIOS</span><h2>MORE THAN<br/><em>A GAME.</em></h2><p>Spider Studios is an independent Roblox game studio focused on creating, improving, publishing, and growing experiences for players around the world.</p><p>We work across gameplay programming, creative development, community building, creator relationships, and business opportunities.</p><Link className="textLink" href="/about">LEARN ABOUT THE STUDIO <Arrow/></Link></div></section>
 
