@@ -1,7 +1,7 @@
 "use client";
 import {useMemo,useState} from "react";
-import {games} from "../data/games";
-import {staff} from "../data/team";
+import {games} from "../../data/games";
+import {staff} from "../../data/team";
 
 const roles=["Scripters","Map Builders","3D Modelers","UI Designers","VFX Artists","Animators","Game Designers","Sound Designers","QA Testers","Backend Developers","Frontend Developers","Full-Stack Developers","Roblox Developers","Discord Developers","DevOps","Community Managers","Marketing","Game Analysts","Concept / Idea Developers"];
 
