@@ -83,3 +83,5 @@
 @media(max-width:650px){.gameMarquee{margin:20px 0}.marqueeGame{width:210px;height:120px}.gameMarquee.large .marqueeGame{width:245px;height:138px}}
 
 /* production cache refresh */
+
+.footerEmail{display:block;margin-top:8px;color:#9aa0aa;font-size:12px;text-decoration:none;letter-spacing:.02em}.footerEmail:hover{color:#fff;text-decoration:underline}
