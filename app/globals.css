@@ -64,10 +64,10 @@
 
 
 /* Roblox thumbnail marquees — added outside the existing hero so the homepage hero stays unchanged */
-.gameMarquee{position:relative;overflow:hidden;width:100%;padding:18px 0;background:#080808;border-top:1px solid #202020;border-bottom:1px solid #202020;transform:rotate(-1.2deg) scale(1.02);margin:30px 0;z-index:3}
-.gameMarquee.large{padding:24px 0;transform:rotate(1.2deg) scale(1.02);margin:40px 0}
-.gameMarqueeFade{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#080808 0%,transparent 8%,transparent 92%,#080808 100%)}
-.gameMarqueeTrack{display:flex;width:max-content;gap:14px;animation:spiderGameMarquee 52s linear infinite}
+.gameMarquee{position:relative;overflow:hidden;width:100%;min-height:176px;display:flex;align-items:center;padding:28px 0;background:#0d1016;border-top:1px solid #30343c;border-bottom:1px solid #30343c;transform:none;margin:34px 0;z-index:3;isolation:isolate}
+.gameMarquee.large{min-height:210px;padding:34px 0;transform:none;margin:44px 0}
+.gameMarqueeLabel{position:absolute;top:9px;left:22px;z-index:4;font-size:8px;font-weight:900;letter-spacing:.18em;color:#737b88;pointer-events:none}.gameMarqueeFade{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#0d1016 0%,rgba(13,16,22,.2) 7%,transparent 12%,transparent 88%,rgba(13,16,22,.2) 93%,#0d1016 100%)}
+.gameMarqueeTrack{position:relative;z-index:1;display:flex;width:max-content;gap:14px;animation:spiderGameMarquee 52s linear infinite;will-change:transform}
 .gameMarquee.reverse .gameMarqueeTrack{animation-name:spiderGameMarqueeReverse;animation-duration:60s}
 .marqueeGame{position:relative;display:block;flex:none;width:245px;height:140px;border:1px solid #292929;border-radius:14px;overflow:hidden;background:#111;text-decoration:none}
 .gameMarquee.large .marqueeGame{width:300px;height:170px;border-radius:16px}
@@ -79,7 +79,7 @@
 .marqueeGame span{flex:none;font-size:7px;font-weight:900;letter-spacing:.1em;color:#aaa}
 @keyframes spiderGameMarquee{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
 @keyframes spiderGameMarqueeReverse{from{transform:translateX(-33.333%)}to{transform:translateX(0)}}
-@media(prefers-reduced-motion:reduce){.gameMarqueeTrack{animation:none}}
+
 @media(max-width:650px){.gameMarquee{margin:20px 0}.marqueeGame{width:210px;height:120px}.gameMarquee.large .marqueeGame{width:245px;height:138px}}
 
 /* production cache refresh */
