@@ -64,6 +64,6 @@ export default function Home(){
 
   <SpiderSupport/>
 
-  <footer className="siteFooter"><div><Link className="brand" href="/"><Brand/><span>SPIDER</span><b>STUDIOS</b></Link><p>Independent Roblox Game Studio</p></div><div><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><Link href="/admin">Admin</Link></div><small>© {new Date().getFullYear()} Spider Studios</small></footer>
+  <footer className="siteFooter"><div><Link className="brand" href="/"><Brand/><span>SPIDER</span><b>STUDIOS</b></Link><p>Independent Roblox Game Studio</p><a className="footerEmail" href="mailto:Spiderstudios137483@gmail.com">Spiderstudios137483@gmail.com</a></div><div><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><Link href="/admin">Admin</Link></div><small>© {new Date().getFullYear()} Spider Studios</small></footer>
  </main>
 }
