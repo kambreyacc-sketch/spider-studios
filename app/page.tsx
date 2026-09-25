@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { games } from "../data/games";
+import SpiderSupport from "./components/SpiderSupport";
 
 const discord=[["Spider Studios","https://discord.gg/ghSzF5fcK"],["Spider Uncopylocked","https://discord.gg/ue2VP47Kn"]];
 const communities=[
@@ -54,6 +55,8 @@ export default function Home(){
    <a className="communityCard" href={discord[1][1]} target="_blank" rel="noreferrer"><img src="https://cdn.discordapp.com/icons/1411733652257374242/06da1c0125b044b0626e60d150cab1fc.webp?size=1024" alt=""/><small>DISCORD</small><h3>Spider Uncopylocked</h3><span>JOIN COMMUNITY <Arrow/></span></a>
    {communities.map(([name,url,img])=><a className="communityCard" key={name} href={url} target="_blank" rel="noreferrer"><img src={img} alt=""/><small>NETWORK</small><h3>{name}</h3><span>VISIT <Arrow/></span></a>)}
   </div></section>
+
+  <SpiderSupport/>
 
   <footer className="siteFooter"><div><Link className="brand" href="/"><Brand/><span>SPIDER</span><b>STUDIOS</b></Link><p>Independent Roblox Game Studio</p></div><div><Link href="/about">About</Link><Link href="/team">Team</Link><Link href="/careers">Careers</Link><Link href="/sell-game">Sell Your Game</Link><Link href="/admin">Admin</Link></div><small>© {new Date().getFullYear()} Spider Studios</small></footer>
  </main>
