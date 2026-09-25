@@ -1,13 +1,3 @@
-import { NextResponse } from "next/server";
-export async function POST(request:Request){
- const webhook=process.env.DISCORD_APPLICATION_WEBHOOK_URL;
- if(!webhook)return NextResponse.json({error:"Application system is not configured."},{status:500});
- const data=await request.json();
- const required=["discord","age","role","portfolio","experience","shipped","skills","problem","teamwork","why","availability","timezone"];
- if(required.some(k=>!String(data[k]||"").trim()))return NextResponse.json({error:"Missing required fields."},{status:400});
- const fields=[["Discord",data.discord],["Age",data.age],["Role",data.role],["Timezone",data.timezone],["Availability",data.availability],["Start Date",data.startDate||"Not specified"],["Portfolio / Examples",data.portfolio],["Experience",data.experience],["What They Shipped",data.shipped],["Technical Skills",data.skills],["Hardest Problem Solved",data.problem],["Team Experience",data.teamwork],["Why Spider Studios",data.why],["Compensation",data.compensation||"Not specified"],["Anything Else",data.anything||"None"]];
- const embed={title:"New Spider Studios Application",description:"**Role:** "+data.role+"\\n**Discord:** "+data.discord,color:16777215,fields:fields.map(([name,value])=>({name,value:String(value).slice(0,1024),inline:false})),footer:{text:"Spider Studios • Careers"},timestamp:new Date().toISOString()};
- const result=await fetch(webhook,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({embeds:[embed],allowed_mentions:{parse:[]}})});
- if(!result.ok)return NextResponse.json({error:"Could not deliver application."},{status:502});
- return NextResponse.json({ok:true});
-}
+import {NextResponse} from "next/server";
+const WEBHOOK=process.env.DISCORD_APPLICATION_WEBHOOK_URL;
+export async function POST(req:Request){if(!WEBHOOK)return NextResponse.json({error:"Webhook not configured"},{status:500});const d=await req.json();const required=["discord","age","role","portfolio","experience","shipped","skills","problem","teamwork","why","availability","timezone"];if(required.some(k=>!String(d[k]||"").trim()))return NextResponse.json({error:"Missing fields"},{status:400});const clean=(v:any)=>String(v||"").slice(0,1000);const fields=[["Discord",d.discord],["Age",d.age],["Role",d.role],["Timezone",d.timezone],["Availability",d.availability],["Start Date",d.startDate||"Not specified"],["Portfolio",d.portfolio],["Experience",d.experience],["Shipped",d.shipped],["Technical Skills",d.skills],["Hardest Problem",d.problem],["Team Experience",d.teamwork],["Why Spider Studios",d.why],["Compensation",d.compensation||"Not specified"],["Anything Else",d.anything||"None"]].map(([name,value])=>({name,value:clean(value),inline:false}));const payload={content:"@here",allowed_mentions:{parse:["everyone"]},embeds:[{title:"🕷️ New Spider Studios Developer Application",description:"Application for **"+clean(d.role)+"**",color:16777215,fields,footer:{text:"Spider Studios • Developer Applications"},timestamp:new Date().toISOString()}]};const r=await fetch(WEBHOOK,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(payload)});if(!r.ok)return NextResponse.json({error:"Discord webhook failed"},{status:502});return NextResponse.json({ok:true})}
