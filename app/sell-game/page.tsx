@@ -24,6 +24,6 @@ export default function SellGamePage(){
    <label className="rights"><input required type="checkbox"/> I confirm that the information provided is accurate and that I am authorized to submit this experience.</label><label className="rights"><input required type="checkbox"/> I understand that submitting this application does not guarantee an offer, partnership, or acquisition.</label>
    {error&&<p style={{color:"#aaa"}}>{error}</p>}<button className="primaryBtn submitBtn" disabled={sending} type="submit">{sending?"SENDING...":"SUBMIT APPLICATION"} <span>↗</span></button>
   </form></section>
-  <footer className="siteFooter"><Link className="brand" href="/"><span className="brandMark"><img src="https://cdn.discordapp.com/icons/1541030301336215562/4119cf6ca8318ba22c8882efb6e18505.webp?size=512" alt="Spider Studios"/></span><span>SPIDER</span><b>STUDIOS</b></Link><small>© {new Date().getFullYear()} Spider Studios</small></footer>
+  <footer className="siteFooter"><Link className="brand" href="/"><span className="brandMark"><img src="https://cdn.discordapp.com/icons/1541030301336215562/4119cf6ca8318ba22c8882efb6e18505.webp?size=512" alt="Spider Studios"/></span><span>SPIDER</span><b>STUDIOS</b></Link><a className="footerEmail" href="mailto:Spiderstudios137483@gmail.com">Spiderstudios137483@gmail.com</a><small>© {new Date().getFullYear()} Spider Studios</small></footer>
  </main>
 }
