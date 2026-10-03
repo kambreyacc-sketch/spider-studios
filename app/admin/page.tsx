@@ -30,10 +30,10 @@ function ActivityChart({snapshots,current,range,onRangeChange}:{snapshots:Activi
  const peak=Math.max(...series.map(x=>x.total));
  const average=Math.round(series.reduce((sum,x)=>sum+x.total,0)/series.length);
  return <div className="adminActivityCard">
-  <div className="adminActivityTop"><div><span className="sectionKicker">LIVE ACTIVITY</span><h2>Concurrent Players</h2></div><div className="adminActivityNumbers"><div><b>{peak.toLocaleString()}</b><small>Peak</small></div><div><b>{average.toLocaleString()}</b><small>Average</small></div></div></div>
+  <div className="adminActivityTop"><div><span className="sectionKicker">LIVE ACTIVITY</span><h2>Concurrent Players</h2></div><div className="adminActivityNumbers"><div><b>{peak.toLocaleString()}</b><small>PEAK CONCURRENT</small></div><div><b>{average.toLocaleString()}</b><small>AVERAGE CONCURRENT</small></div></div></div>
   <div className="adminRange"><div>{(["1D","7D","30D","1Y"] as Range[]).map(item=><button key={item} className={range===item?"active":""} onClick={()=>onRangeChange(item)}>{item}</button>)}</div></div>
   <div className="adminChart"><div className="chartAxis"><span>{max.toLocaleString()}</span><span>{Math.round(max/2).toLocaleString()}</span><span>0</span></div><svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none" aria-label="Concurrent players chart"><defs><linearGradient id="activityFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stopColor="rgba(255,255,255,.24)"/><stop offset="100%" stopColor="rgba(255,255,255,0)"/></linearGradient></defs><line x1="0" y1={yAt(max)} x2={width} y2={yAt(max)} stroke="rgba(255,255,255,.08)"/><line x1="0" y1={yAt(max/2)} x2={width} y2={yAt(max/2)} stroke="rgba(255,255,255,.08)"/><line x1="0" y1={yAt(0)} x2={width} y2={yAt(0)} stroke="rgba(255,255,255,.08)"/><path d={area} fill="url(#activityFill)"/><path d={path} fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>{series.length===1&&<circle cx={xAt(0)} cy={yAt(series[0].total)} r="5" fill="white"/>}</svg></div>
-  <div className="adminActivityLegend"><span><i className="legendTotal"/>Total</span><span>LIVE SNAPSHOTS</span><small>{series.length} sample{series.length===1?"":"s"} collected</small></div>
+  <div className="adminActivityLegend"><span><i className="legendTotal"/>Concurrent players</span><span>LIVE SNAPSHOTS</span><small>{series.length} sample{series.length===1?"":"s"} collected · auto-refreshes every minute</small></div>
  </div>;
 }
 
@@ -46,7 +46,7 @@ export default function AdminPage(){
  const load=async()=>{setChecking(true);const r=await fetch("/api/admin/data",{cache:"no-store"});if(r.ok){const d=await r.json();setGames(d.games||[]);setStaff(d.staff||[]);setLogged(true)}else setLogged(false);setChecking(false)};
  useEffect(()=>{load();try{const saved=JSON.parse(localStorage.getItem("spider-activity-history")||"[]");if(Array.isArray(saved))setActivitySnapshots(saved)}catch{}},[]);
  useEffect(()=>{if(logged&&!analytics)loadAnalytics()},[logged,analytics]);
- useEffect(()=>{if(tab!=="analytics"||!logged)return;const timer=setInterval(()=>loadAnalytics(),60000);return()=>clearInterval(timer)},[tab,logged]);
+ useEffect(()=>{if(!logged)return;const timer=setInterval(()=>loadAnalytics(),60000);return()=>clearInterval(timer)},[logged]);
  const login=async(e:FormEvent)=>{e.preventDefault();setMessage("");const r=await fetch("/api/admin/login",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({password})});if(r.ok){setPassword("");await load();setTab("overview")}else setMessage("Wrong admin password.")};
  const save=async(kind:"games"|"staff",data:any)=>{setSaving(true);setMessage("Saving changes…");try{const r=await fetch("/api/admin/data",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({kind,data})});const x=await r.json().catch(()=>({}));if(!r.ok)throw new Error(x.error||"Could not save");setMessage("Saved to GitHub ✓");setEditing(null);setEditingStaff(null);await load()}catch(e){setMessage(e instanceof Error?e.message:"Could not save.")}finally{setSaving(false)}};
  const logout=async()=>{await fetch("/api/admin/login",{method:"DELETE"});setLogged(false);setTab("overview")};
