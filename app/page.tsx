@@ -24,8 +24,7 @@ export default function Home(){
   <section className="studioHero">
    <video className="heroVideo" autoPlay muted loop playsInline preload="auto" aria-hidden="true"><source src="https://dobig.com/banner.webm" type="video/webm"/></video>
    <div className="heroVideoShade"/>
-   <div className="heroOrb heroOrbOne"/><div className="heroOrb heroOrbTwo"/><div className="heroNoise"/>
-   <div className="heroTicker"><div className="heroTickerTrack">{ticker.map((g,i)=><div className="heroTickerItem" key={i}>{g.title}<b>SPIDER STUDIOS</b>✦</div>)}</div></div>
+
    <div className="heroInner">
     <div className="heroPill"><span/> INDEPENDENT ROBLOX GAME STUDIO</div>
     <h1>WE BUILD<br/><span>EXPERIENCES.</span></h1>
