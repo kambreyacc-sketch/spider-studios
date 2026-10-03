@@ -1,4 +1,4 @@
-export type Game={title:string;description:string;image:string;url:string;tag:string;featured?:boolean;sale?:boolean;status?:string;robloxId?:string;discord?:string;releaseDate?:string;updatedAt?:string;visits?:string;players?:string;favorites?:string;screenshots?:string[]};
+export type Game={title:string;description:string;image:string;url:string;tag:string;featured?:boolean;sale?:boolean;status?:string;robloxId?:string;universeId?:string;discord?:string;releaseDate?:string;updatedAt?:string;visits?:string;players?:string;favorites?:string;screenshots?:string[]};
 
 export const games:Game[]=[
   {
@@ -66,5 +66,24 @@ export const games:Game[]=[
     "sale": true,
     "status": "LIVE",
     "robloxId": "102974117360311"
+  },
+  {
+    "title": "+1 Speed Jelly Escape",
+    "description": "A fast-paced jelly escape game where every step makes you faster. Race through colorful stages, collect rewards, rebirth, and climb the leaderboards.",
+    "image": "https://placehold.co/768x432/111111/ffffff?text=%2B1+Speed+Jelly+Escape",
+    "url": "https://www.roblox.com/games/119794319382738/1-Speed-Jelly-Escape",
+    "tag": "SIMULATION",
+    "status": "LIVE",
+    "robloxId": "119794319382738",
+    "universeId": "10048187365"
+  },
+  {
+    "title": "a",
+    "description": "A Roblox experience listed by Spider Studios.",
+    "image": "https://placehold.co/768x432/111111/ffffff?text=a",
+    "url": "https://www.roblox.com/games/96885652495783/a",
+    "tag": "ROBLOX",
+    "status": "LIVE",
+    "robloxId": "96885652495783"
   }
 ];
