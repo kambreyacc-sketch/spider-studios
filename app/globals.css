@@ -198,8 +198,8 @@
 
 /* Clean homepage hero — one focal point, no layered collage */
 .studioHero{min-height:650px;height:calc(100vh - 82px);max-height:820px;position:relative;overflow:hidden;background:#07080a;border-bottom:1px solid #222}
-.studioHero .heroVideo,.studioHero .heroTicker,.studioHero .heroOrb,.studioHero .heroNoise{display:none}
-.studioHero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 42%,rgba(255,255,255,.075),transparent 32%),linear-gradient(115deg,#08090b 0%,#0b0c10 62%,#111318 100%)}
+.studioHero .heroTicker,.studioHero .heroOrb,.studioHero .heroNoise{display:none}.studioHero .heroVideo{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.32;filter:grayscale(1) contrast(1.05);mix-blend-mode:screen}
+.studioHero:before{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(90deg,rgba(5,6,8,.88) 0%,rgba(5,6,8,.58) 48%,rgba(5,6,8,.35) 100%)}
 .studioHero:after{content:"";position:absolute;width:560px;height:560px;right:-180px;top:50%;transform:translateY(-50%);border:1px solid rgba(255,255,255,.07);border-radius:50%;box-shadow:0 0 0 80px rgba(255,255,255,.012),0 0 0 160px rgba(255,255,255,.008)}
 .heroVideoShade{display:none}
 .heroInner{position:relative;z-index:2;width:min(1280px,88vw);height:100%;margin:auto;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-bottom:55px}
