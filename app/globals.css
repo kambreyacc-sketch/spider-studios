@@ -195,3 +195,23 @@
 .liveGameGrid{grid-template-columns:repeat(2,1fr);gap:14px;margin-top:0}.liveCard{border-radius:15px;background:#101010}.liveCard .gameImage{height:280px}.liveCard .gameStatus{position:absolute;right:16px;top:16px;background:#111;border:1px solid #333;color:#aaa;padding:7px 9px;border-radius:6px;font-size:7px;font-weight:900;letter-spacing:.1em}.livePlayers{position:absolute;left:16px;bottom:16px;background:rgba(8,8,8,.86);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);padding:9px 11px;border-radius:7px;color:#fff;font-size:8px;font-weight:900;letter-spacing:.08em}.livePlayers i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#8cffb0;margin-right:6px}.liveCard .gameCardInfo{padding:22px}.liveCardMeta{display:flex;gap:14px;margin-bottom:13px;color:#666;font-size:7px;font-weight:900;letter-spacing:.1em}.liveCard .gameCardInfo h3{font-size:25px}.liveCard .gameCardInfo p{min-height:45px}
 @media(max-width:800px){.liveStatsNumbers{grid-template-columns:1fr}.liveStatsNumbers>div{border-right:0;border-bottom:1px solid #292929}.liveStatsNumbers>div:last-child{border-bottom:0}.liveGameRow{grid-template-columns:58px 1fr 85px 25px}.liveGameRow>span{display:none}.liveGameRow img{width:58px;height:38px}.gameBrowserTop,.gameBrowserTools{align-items:flex-start;flex-direction:column}.gameFilters{justify-content:flex-start}.liveGameGrid{grid-template-columns:1fr}}
 @media(max-width:650px){.liveStudioStats{width:90vw;margin-top:60px}.liveStatsHead{align-items:flex-start;flex-direction:column;gap:18px}.liveStatsNumbers strong{font-size:38px}.liveGameRow{grid-template-columns:50px 1fr 80px 20px;gap:10px;padding:10px}.liveGameRow img{width:50px;height:34px}.liveGameRow>strong{font-size:12px}.liveCard .gameImage{height:230px}.gameBrowserTools input{width:100%;flex-basis:auto}}
+
+/* Clean homepage hero — one focal point, no layered collage */
+.studioHero{min-height:650px;height:calc(100vh - 82px);max-height:820px;position:relative;overflow:hidden;background:#07080a;border-bottom:1px solid #222}
+.studioHero .heroVideo,.studioHero .heroTicker,.studioHero .heroOrb,.studioHero .heroNoise{display:none}
+.studioHero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 42%,rgba(255,255,255,.075),transparent 32%),linear-gradient(115deg,#08090b 0%,#0b0c10 62%,#111318 100%)}
+.studioHero:after{content:"";position:absolute;width:560px;height:560px;right:-180px;top:50%;transform:translateY(-50%);border:1px solid rgba(255,255,255,.07);border-radius:50%;box-shadow:0 0 0 80px rgba(255,255,255,.012),0 0 0 160px rgba(255,255,255,.008)}
+.heroVideoShade{display:none}
+.heroInner{position:relative;z-index:2;width:min(1280px,88vw);height:100%;margin:auto;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-bottom:55px}
+.heroPill{display:flex;align-items:center;gap:10px;color:#777;font-size:9px;font-weight:900;letter-spacing:.18em;margin-bottom:24px}
+.heroPill span{width:6px;height:6px;background:#fff;border-radius:50%;display:block}
+.heroInner h1{margin:0;font-size:clamp(72px,10vw,150px);line-height:.82;letter-spacing:-.09em;font-weight:950;max-width:1000px}
+.heroInner h1 span{color:#5f6064}
+.heroInner p{max-width:620px;margin:32px 0 0;color:#888;font-size:16px;line-height:1.65}
+.heroActions{display:flex;gap:10px;align-items:center;margin-top:28px}
+.heroActions .primaryBtn,.heroActions .ghostBtn{padding:14px 17px}
+.adminQuick{color:#555;text-decoration:none;font-size:8px;font-weight:900;letter-spacing:.12em;padding:14px 8px}
+.heroBottom{position:absolute;z-index:3;bottom:0;left:0;right:0;border-top:1px solid #222;display:flex;justify-content:space-between;padding:15px 6vw;color:#555;font-size:8px;font-weight:900;letter-spacing:.14em}
+.heroBottom span:not(:first-child){border-left:1px solid #292929;padding-left:24px}
+.statsBar{background:#0b0b0c;border-bottom:1px solid #222}
+@media(max-width:800px){.studioHero{height:auto;min-height:680px}.heroInner{padding:80px 0 100px}.heroInner h1{font-size:clamp(64px,15vw,105px)}.heroInner p{font-size:14px}.heroBottom{gap:12px;overflow:hidden}.heroBottom span{white-space:nowrap}.heroBottom span:not(:first-child){display:none}}
