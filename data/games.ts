@@ -70,7 +70,7 @@ export const games:Game[]=[
   {
     "title": "+1 Speed Jelly Escape",
     "description": "A fast-paced jelly escape game where every step makes you faster. Race through colorful stages, collect rewards, rebirth, and climb the leaderboards.",
-    "image": "https://placehold.co/768x432/111111/ffffff?text=%2B1+Speed+Jelly+Escape",
+    "image": "/api/roblox-thumbnail?placeId=119794319382738",
     "url": "https://www.roblox.com/games/119794319382738/1-Speed-Jelly-Escape",
     "tag": "SIMULATION",
     "status": "LIVE",
@@ -80,7 +80,7 @@ export const games:Game[]=[
   {
     "title": "a",
     "description": "A Roblox experience listed by Spider Studios.",
-    "image": "https://placehold.co/768x432/111111/ffffff?text=a",
+    "image": "/api/roblox-thumbnail?placeId=96885652495783",
     "url": "https://www.roblox.com/games/96885652495783/a",
     "tag": "ROBLOX",
     "status": "LIVE",
