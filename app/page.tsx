@@ -2,6 +2,7 @@ import Link from "next/link";
 import { games } from "../data/games";
 import SpiderSupport from "./components/SpiderSupport";
 import GameBrowser from "./components/GameBrowser";
+import LiveGameStats from "./components/LiveGameStats";
 import MobileNav from "./components/MobileNav";
 
 const discord=[["Spider Studios","https://discord.gg/ghSzF5fcK"],["Spider Uncopylocked","https://discord.gg/ue2VP47Kn"]];
@@ -36,7 +37,7 @@ export default function Home(){
 
   <section className="statsBar"><div><strong>{games.filter(g=>!g.sale).length}+</strong><span>LIVE PROJECTS</span></div><div><strong>ROBLOX</strong><span>PRIMARY PLATFORM</span></div><div><strong>24/7</strong><span>COMMUNITY FOCUS</span></div><div><strong>01</strong><span>STUDIO MISSION</span></div></section>
 
-  {marquee(false)}
+  <LiveGameStats games={games}/>
 
   <section id="games" className="studioSection">
    <div className="sectionIntro"><div><span className="sectionKicker">OUR GAMES</span><h2>MADE TO<br/><em>BE PLAYED.</em></h2></div><p>From obbies and survival games to horror and adventure, our portfolio is built around ideas with room to grow.</p></div>
