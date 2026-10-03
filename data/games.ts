@@ -8,6 +8,7 @@ export const games:Game[]=[
     "url": "https://www.roblox.com/games/119794319382738/1-Speed-Jelly-Escape",
     "tag": "SIMULATION",
     "status": "LIVE",
+    "featured": true,
     "robloxId": "119794319382738",
     "universeId": "10048187365"
   },
@@ -18,6 +19,7 @@ export const games:Game[]=[
     "url": "https://www.roblox.com/games/96885652495783/a",
     "tag": "ROBLOX",
     "status": "LIVE",
+    "featured": true,
     "robloxId": "96885652495783"
   },
   {
@@ -53,7 +55,6 @@ export const games:Game[]=[
     "image": "https://tr.rbxcdn.com/180DAY-2b089f2e0191a3486969b9eb74a707d3/768/432/Image/Jpeg/noFilter",
     "url": "https://www.roblox.com/games/109089208079236/Blox-Fruit-Reborn",
     "tag": "ADVENTURE",
-    "featured": true,
     "status": "LIVE",
     "robloxId": "109089208079236"
   },
@@ -63,7 +64,6 @@ export const games:Game[]=[
     "image": "https://tr.rbxcdn.com/180DAY-b67e413b6bc6fc409ad8b6389a9e8a86/768/432/Image/Jpeg/noFilter",
     "url": "https://www.roblox.com/games/105489916758603/The-Cabin",
     "tag": "HORROR",
-    "featured": true,
     "status": "LIVE",
     "robloxId": "105489916758603"
   },
