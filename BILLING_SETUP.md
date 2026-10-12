@@ -80,3 +80,11 @@ Review and apply the migration in a non-production database first. Do not point 
 ## Not yet ready for production
 
 This branch has not been built or run against a configured PostgreSQL database or Stripe test account. Confirm the preview deployment, install/generate Prisma, apply the migration to a test database, and complete the checklist before merging. Developer-to-developer marketplace payments and Stripe Connect payouts are a separate follow-up phase.
+
+## Existing Vercel configuration inspection (2026-10-12)
+
+The linked Vercel project inspected is `spider-studios-ndgl` (Next.js). Its visible environment-variable inventory contains the existing admin password/session configuration, GitHub integration configuration, and two Discord webhook entries. It does **not** list `DATABASE_URL`, `POSTGRES_PRISMA_URL`, any Stripe keys, or Discord OAuth client credentials. The Vercel project connector listing is empty, and the repository's existing `main` tree contains no Prisma, Drizzle, Supabase, or database client setup. The existing admin data endpoint stores game/staff edits in GitHub files on `main`.
+
+Therefore, I could not identify a database connection usable by this app from the accessible project configuration. The schema and migration in this branch are a proposed PostgreSQL billing schema, **not yet connected to or migrated into your existing database**. Do not run the migration or deploy billing until the existing database provider and its environment-variable names are confirmed. If the database is connected outside this Vercel project/environment list, it may need to be linked to this project or its server-side connection variable exposed to the deployment.
+
+The existing admin password variable was also flagged by Vercel as a readable-secret configuration issue. Review its visibility in Vercel and rotate it if it has been exposed; secret values were not retrieved or displayed during this inspection.
