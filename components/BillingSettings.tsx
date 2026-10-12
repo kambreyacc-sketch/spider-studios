@@ -80,7 +80,7 @@ export default function BillingSettings() {
           <section className="spiderSettingsPanel">
             <div className="spiderSettingsEyebrow">YOUR MEMBERSHIP</div><h2 style={{ marginTop: 8 }}>Subscription overview</h2><p>Signed in as {summary.account.discordUsername}.</p>
             <div className="spiderBillingGrid">
-              <div className="spiderBillingMetric"><span>Current plan</span><strong>{summary.subscription ? "Spider Studio Premium" : "Free plan"}</strong></div>
+              <div className="spiderBillingMetric"><span>Current plan</span><strong>{summary.subscription ? (summary.subscription.status === "active" || summary.subscription.status === "trialing" ? "Spider Studio Premium" : summary.subscription.status === "past_due" || summary.subscription.status === "unpaid" ? "Payment issue" : "Subscription pending") : "Free plan"}</strong></div>
               <div className="spiderBillingMetric"><span>Subscription status</span><strong>{summary.subscription ? statusLabel(summary.subscription.status) : "No paid subscription"}</strong></div>
               <div className="spiderBillingMetric"><span>Next renewal / period end</span><strong>{summary.subscription ? date(summary.subscription.currentPeriodEnd) : "—"}</strong></div>
               <div className="spiderBillingMetric"><span>Renewal setting</span><strong>{summary.subscription ? summary.subscription.cancelAtPeriodEnd ? "Cancels at period end" : "Renews automatically" : "Not subscribed"}</strong></div>
