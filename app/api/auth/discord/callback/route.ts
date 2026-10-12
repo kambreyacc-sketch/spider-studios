@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
   if (!code || !state || !expectedState || state !== expectedState) return fail("Discord sign-in state validation failed.");
   const clientId = process.env.DISCORD_CLIENT_ID;
   const clientSecret = process.env.DISCORD_CLIENT_SECRET;
-  const appUrl = process.env.APP_URL || process.env.NEXT_PUBLIC_APP_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  const appUrl = process.env.APP_URL || process.env.NEXT_PUBLIC_APP_URL || process.env.VERCEL_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL;
   if (!clientId || !clientSecret || !appUrl) return fail("Discord OAuth is not fully configured on this deployment.", 503);
   if (!process.env.DATABASE_URL) return fail("Account storage is not configured. Set DATABASE_URL before enabling sign-in.", 503);
   const origin = appUrl.startsWith("http") ? appUrl.replace(/\/$/, "") : `https://${appUrl.replace(/\/$/, "")}`;
@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
     });
     const response = NextResponse.redirect(new URL("/dashboard/settings?tab=billing", origin));
     response.cookies.set(sessionCookieName, createSessionToken({ userId: user.id, discordId: user.discordId }), {
-      httpOnly: true, secure: true, sameSite: "lax", path: "/", maxAge: 60 * 60 * 24 * 14,
+      httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: 60 * 60 * 24 * 14,
     });
     response.cookies.delete("spider_oauth_state");
     return response;
