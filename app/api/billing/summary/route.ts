@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { getAuthenticatedUser } from "../../../../lib/session";
 import { getStripe } from "../../../../lib/stripe";
 
-export const runtime = "nodejs";\nexport const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const user = await getAuthenticatedUser();
