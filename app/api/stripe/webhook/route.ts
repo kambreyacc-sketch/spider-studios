@@ -89,7 +89,9 @@ export async function POST(request: NextRequest) {
     await prisma.processedStripeEvent.create({ data: { id: event.id, type: event.type } });
     return NextResponse.json({ received: true });
   } catch (error) {
-    console.error("Stripe webhook processing failed:", event.type, error instanceof Error ? error.message : "unknown error");
+    const safeMessage = (error instanceof Error ? error.message : "Unknown webhook processing error").slice(0, 500);
+    console.error("Stripe webhook processing failed:", event.type, safeMessage);
+    await prisma.billingIssue.create({ data: { stripeEventId: event.id, eventType: event.type, message: safeMessage } }).catch(() => undefined);
     return NextResponse.json({ error: "Webhook processing failed; Stripe should retry this event." }, { status: 500 });
   }
 }
