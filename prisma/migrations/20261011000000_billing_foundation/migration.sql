@@ -43,3 +43,14 @@ CREATE INDEX "Subscription_userId_status_idx" ON "Subscription"("userId", "statu
 
 -- AddForeignKey
 ALTER TABLE "Subscription" ADD CONSTRAINT "Subscription_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- CreateTable
+CREATE TABLE "BillingIssue" (
+    "id" TEXT NOT NULL,
+    "stripeEventId" TEXT,
+    "eventType" TEXT,
+    "message" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "BillingIssue_pkey" PRIMARY KEY ("id")
+);
+CREATE INDEX "BillingIssue_createdAt_idx" ON "BillingIssue"("createdAt");
