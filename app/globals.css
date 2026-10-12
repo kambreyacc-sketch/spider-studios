@@ -215,3 +215,52 @@
 .heroBottom span:not(:first-child){border-left:1px solid #292929;padding-left:24px}
 .statsBar{background:#0b0b0c;border-bottom:1px solid #222}
 @media(max-width:800px){.studioHero{height:auto;min-height:680px}.heroInner{padding:80px 0 100px}.heroInner h1{font-size:clamp(64px,15vw,105px)}.heroInner p{font-size:14px}.heroBottom{gap:12px;overflow:hidden}.heroBottom span{white-space:nowrap}.heroBottom span:not(:first-child){display:none}}
+
+/* Spider Studio monochrome refresh + account/billing surfaces */
+:root{--bg:#080808;--panel:#101010;--panel2:#151515;--line:#252525;--text:#f5f5f5;--muted:#8b8b8b;--soft:#c5c5c5;--accent:#ededed;--accent-ink:#090909}
+html{color-scheme:dark;scroll-padding-top:100px}
+body{background:var(--bg);color:var(--text);text-rendering:optimizeLegibility}
+::selection{background:#e8e8e8;color:#080808}
+.siteNav{background:rgba(8,8,8,.88);border-bottom-color:rgba(255,255,255,.09)}
+.navlinks a{transition:color .18s ease,opacity .18s ease}
+.navlinks a:hover{color:#fff;opacity:1}
+.primaryBtn{background:#f2f2f2!important;color:#090909!important;border:1px solid #f2f2f2!important;transition:transform .2s ease,background .2s ease}
+.primaryBtn:hover{background:#fff!important;transform:translateY(-2px)}
+.ghostBtn{border:1px solid #3a3a3a!important;background:rgba(255,255,255,.025);transition:border-color .2s ease,background .2s ease}
+.ghostBtn:hover{border-color:#aaa!important;background:rgba(255,255,255,.06)}
+:where(.gameCard,.marqueeGame,.adminActivityCard,.adminStatCard,.adminPanel,.communityCard){border-color:rgba(255,255,255,.1)}
+:where(button,a,input,textarea,select):focus-visible{outline:2px solid #e7e7e7;outline-offset:3px}
+.spiderSettings{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:54px 0 90px}
+.spiderSettingsShell{display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px;align-items:start}
+.spiderSettingsSidebar,.spiderSettingsPanel{border:1px solid #262626;background:linear-gradient(145deg,#111 0%,#0b0b0b 100%);border-radius:18px}
+.spiderSettingsSidebar{padding:18px;position:sticky;top:105px}
+.spiderSettingsEyebrow{font-size:10px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;color:#8c8c8c}
+.spiderSettingsHeading{font-size:clamp(30px,4vw,46px);letter-spacing:-.06em;line-height:1.04;margin:12px 0}
+.spiderSettingsCopy{font-size:13px;line-height:1.75;color:#999;max-width:660px}
+.spiderSettingsNav{display:grid;gap:6px;margin-top:22px}
+.spiderSettingsNav a{padding:11px 12px;border-radius:10px;text-decoration:none;color:#a2a2a2;font-size:12px;font-weight:650;border:1px solid transparent}
+.spiderSettingsNav a[aria-current=page],.spiderSettingsNav a:hover{color:#fff;background:#1a1a1a;border-color:#2d2d2d}
+.spiderSettingsMain{min-width:0;display:grid;gap:16px}
+.spiderSettingsPanel{padding:clamp(18px,3vw,28px)}
+.spiderSettingsPanel h2{font-size:17px;letter-spacing:-.025em;margin:0 0 8px}
+.spiderSettingsPanel p{font-size:12px;line-height:1.75;color:#999;margin:0}
+.spiderBillingStatus{display:flex;gap:12px;align-items:flex-start;border:1px solid #303030;background:#151515;border-radius:12px;padding:14px}
+.spiderBillingStatusIcon{display:grid;place-items:center;flex:none;width:32px;height:32px;border-radius:9px;background:#222;color:#eee;font-size:15px}
+.spiderBillingStatus strong{display:block;font-size:12px;margin:1px 0 5px}
+.spiderBillingStatus span{display:block;font-size:11px;line-height:1.65;color:#a0a0a0}
+.spiderBillingGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.spiderBillingMetric{border:1px solid #262626;background:#0b0b0b;border-radius:12px;padding:16px;min-width:0}
+.spiderBillingMetric span{display:block;font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#858585}
+.spiderBillingMetric strong{display:block;font-size:15px;margin-top:9px;overflow-wrap:anywhere}
+.spiderSettingsButton{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #ececec;background:#ededed;color:#090909;text-decoration:none;border-radius:10px;padding:11px 15px;font-size:11px;font-weight:800;letter-spacing:.02em;cursor:pointer;transition:transform .18s ease,background .18s ease}
+.spiderSettingsButton:hover{background:#fff;transform:translateY(-1px)}
+.spiderSettingsButton.secondary{background:#151515;color:#eee;border-color:#363636}
+.spiderSettingsButton.secondary:hover{background:#202020}
+.spiderSettingsActions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.spiderSettingsFootnote{font-size:10px;line-height:1.7;color:#777;margin-top:16px}
+.spiderBillingTableWrap{overflow-x:auto;margin-top:14px}
+.spiderBillingTable{border-collapse:collapse;width:100%;min-width:500px;text-align:left}
+.spiderBillingTable th{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#858585;font-weight:800;padding:11px 10px;border-bottom:1px solid #2a2a2a}
+.spiderBillingTable td{font-size:11px;color:#c9c9c9;padding:13px 10px;border-bottom:1px solid #1f1f1f}
+.spiderBillingEmpty{text-align:center;padding:24px 12px!important;color:#858585!important}
+@media(max-width:760px){.spiderSettings{width:min(100% - 28px,600px);padding-top:30px}.spiderSettingsShell{grid-template-columns:1fr;gap:14px}.spiderSettingsSidebar{position:static}.spiderSettingsNav{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:14px}.spiderBillingGrid{grid-template-columns:1fr}.spiderSettingsPanel{padding:18px}}
