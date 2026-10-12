@@ -1,0 +1,26 @@
+name: Validate Spider Studio preview
+on:
+  pull_request:
+    branches: [main]
+concurrency:
+  group: spider-studio-preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install
+      - name: Validate Prisma schema
+        env:
+          DATABASE_URL: postgresql://spider:spider@localhost:5432/spider_test
+        run: npx prisma validate
+      - name: Build Next.js
+        env:
+          DATABASE_URL: postgresql://spider:spider@localhost:5432/spider_test
+          DISCORD_SESSION_SECRET: test-only-build-secret-with-more-than-32-characters
+        run: npm run build
