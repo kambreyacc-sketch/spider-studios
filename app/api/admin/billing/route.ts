@@ -32,7 +32,7 @@ export async function GET() {
         const result = invoiceLists[i];
         if (result.status === "fulfilled") {
           invoicesByCustomer[customers[i].id] = result.value.data.map(invoice => ({
-            id: invoice.id, number: invoice.number, status: invoice.status, created: invoice.created,
+            id: invoice.id ?? `invoice-${invoice.created}`, number: invoice.number, status: invoice.status, created: invoice.created,
             amountDue: invoice.amount_due, amountPaid: invoice.amount_paid, currency: invoice.currency,
           }));
         }
