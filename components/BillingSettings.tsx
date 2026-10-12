@@ -66,9 +66,8 @@ export default function BillingSettings() {
       <aside className="spiderSettingsSidebar">
         <div className="spiderSettingsEyebrow">SETTINGS</div>
         <nav className="spiderSettingsNav" aria-label="Account settings">
-          <Link href="/dashboard/settings">Account</Link>
+          <Link href="/" >← Spider Studio</Link>
           <Link href="/dashboard/settings?tab=billing" aria-current="page">Billing &amp; payments</Link>
-          <Link href="/dashboard/settings?tab=security">Security</Link>
         </nav>
         <div className="spiderSettingsFootnote">SECURE BILLING · POWERED BY STRIPE</div>
       </aside>
