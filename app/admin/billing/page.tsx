@@ -37,7 +37,7 @@ export default function AdminBillingPage(){
     <p className="spiderSettingsCopy">Authorized overview of subscriptions, payment status, invoice references, and recent billing-processing errors. Full card details and payment credentials are never displayed.</p>
     <div className="spiderSettingsActions"><Link className="spiderSettingsButton secondary" href="/admin">← Studio admin</Link><button className="spiderSettingsButton" onClick={()=>void load()}>Refresh data ↻</button></div>
     {state==="loading"&&<section className="spiderSettingsPanel" style={{marginTop:18}}><h2>Loading billing records…</h2></section>}
-    {state==="signin"&&<section className="spiderSettingsPanel" style={{marginTop:18}}><h2>Verify administrator account</h2><p>Sign in with the authorized Discord account to access billing administration.</p><div className="spiderSettingsActions"><a className="spiderSettingsButton" href="/api/auth/discord/start">Continue with Discord ↗</a></div></section>}
+    {state==="signin"&&<section className="spiderSettingsPanel" style={{marginTop:18}}><h2>Verify administrator account</h2><p>Use the existing Spider Studio admin login to access billing administration.</p><div className="spiderSettingsActions"><Link className="spiderSettingsButton" href="/admin">Open admin login ↗</Link></div></section>}
     {state==="forbidden"&&<section className="spiderSettingsPanel" style={{marginTop:18}}><h2>Access denied</h2><p>This Discord account is not authorized to view billing records.</p></section>}
     {state==="error"&&<section className="spiderSettingsPanel" style={{marginTop:18}}><h2>Billing data unavailable</h2><p>{error}</p></section>}
     {state==="ready"&&data&&<>
