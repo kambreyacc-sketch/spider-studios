@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getAuthenticatedUser } from "../../../../lib/session";
 import { getStripe } from "../../../../lib/stripe";
 
-export const runtime = "nodejs";
+export const runtime = "nodejs";\nexport const dynamic = "force-dynamic";
 
 export async function GET() {
   const user = await getAuthenticatedUser();
@@ -27,7 +27,8 @@ export async function GET() {
     const defaultId = typeof customer.invoice_settings.default_payment_method === "string"
       ? customer.invoice_settings.default_payment_method
       : customer.invoice_settings.default_payment_method?.id;
-    const subscription = subscriptions.data.find(s => ["active", "trialing", "past_due", "unpaid", "incomplete", "paused"].includes(s.status)) || null;
+    const priority = ["active", "trialing", "past_due", "unpaid", "incomplete", "paused"];
+    const subscription = subscriptions.data.filter(s => priority.includes(s.status)).sort((a, b) => priority.indexOf(a.status) - priority.indexOf(b.status))[0] || null;
     return NextResponse.json({
       account: { discordUsername: user.discordUsername },
       subscription: subscription ? {
