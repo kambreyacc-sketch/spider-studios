@@ -1,17 +1,13 @@
 import { NextResponse } from "next/server";
 import { prisma } from "../../../../lib/prisma";
-import { getAuthenticatedUser } from "../../../../lib/session";
+import { hasAdminSession } from "../../../../lib/admin-auth";
 import { getStripe } from "../../../../lib/stripe";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const ADMIN_DISCORD_ID = process.env.SPIDER_ADMIN_DISCORD_ID || "1337293227820322878";
-
 export async function GET() {
-  const user = await getAuthenticatedUser();
-  if (!user) return NextResponse.json({ error: "Sign in with the authorized Discord account." }, { status: 401 });
-  if (user.discordId !== ADMIN_DISCORD_ID) return NextResponse.json({ error: "You are not authorized to view billing administration." }, { status: 403 });
+  if (!(await hasAdminSession())) return NextResponse.json({ error: "Sign in through the existing Spider Studio admin login." }, { status: 401 });
   try {
     const [users, issues] = await Promise.all([
       prisma.user.findMany({
