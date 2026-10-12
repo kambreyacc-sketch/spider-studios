@@ -3,7 +3,8 @@ import { prisma } from "../../../../lib/prisma";
 import { getAuthenticatedUser } from "../../../../lib/session";
 import { getStripe } from "../../../../lib/stripe";
 
-export const runtime = "nodejs";\nexport const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const ADMIN_DISCORD_ID = process.env.SPIDER_ADMIN_DISCORD_ID || "1337293227820322878";
 
