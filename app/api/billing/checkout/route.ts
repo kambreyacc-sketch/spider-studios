@@ -27,6 +27,9 @@ export async function POST(request: NextRequest) {
       customerId = customer.id;
       await prisma.user.update({ where: { id: user.id }, data: { stripeCustomerId: customerId } });
     }
+    const existing = await stripe.subscriptions.list({ customer: customerId, status: "all", limit: 100 });
+    const blocking = existing.data.find(s => ["active", "trialing", "incomplete", "past_due", "unpaid", "paused"].includes(s.status));
+    if (blocking) return NextResponse.json({ error: "A subscription already exists on this account. Use Manage subscription to update it." }, { status: 409 });
     const session = await stripe.checkout.sessions.create({
       mode: "subscription",
       customer: customerId,
@@ -37,7 +40,7 @@ export async function POST(request: NextRequest) {
       metadata: { spiderUserId: user.id, discordId: user.discordId, interval },
       subscription_data: { metadata: { spiderUserId: user.id, discordId: user.discordId, interval } },
       allow_promotion_codes: true,
-    }, { idempotencyKey: request.headers.get("idempotency-key") || undefined });
+    }, { idempotencyKey: `spider-checkout-${user.id}-${interval}-${Math.floor(Date.now() / 60000)}` });
     if (!session.url) return NextResponse.json({ error: "Stripe did not return a checkout URL." }, { status: 502 });
     return NextResponse.json({ url: session.url });
   } catch (error) {
