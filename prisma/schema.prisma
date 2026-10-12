@@ -42,3 +42,13 @@ model ProcessedStripeEvent {
   type        String
   processedAt DateTime @default(now())
 }
+
+model BillingIssue {
+  id            String   @id @default(cuid())
+  stripeEventId String?
+  eventType     String?
+  message       String
+  createdAt     DateTime @default(now())
+
+  @@index([createdAt])
+}
