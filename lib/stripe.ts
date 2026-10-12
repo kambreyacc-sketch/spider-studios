@@ -21,7 +21,7 @@ export function getConfiguredPrice(interval: "monthly" | "yearly"): string {
 }
 
 export function getPublicAppUrl(): string {
-  const raw = process.env.APP_URL || process.env.NEXT_PUBLIC_APP_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  const raw = process.env.APP_URL || process.env.NEXT_PUBLIC_APP_URL || process.env.VERCEL_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL;
   if (!raw) throw new Error("APP_URL is missing. Configure the canonical Spider Studio URL.");
   return raw.startsWith("http") ? raw.replace(/\/$/, "") : `https://${raw.replace(/\/$/, "")}`;
 }
