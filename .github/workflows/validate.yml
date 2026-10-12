@@ -2,8 +2,9 @@ name: Validate Spider Studio preview
 on:
   pull_request:
     branches: [main]
-  push:
-    branches: [feat/monochrome-billing-foundation]
+concurrency:
+  group: spider-studio-preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
