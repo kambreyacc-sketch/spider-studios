@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    String         @id @default(cuid())
+  discordId             String         @unique
+  discordUsername       String
+  discordAvatar         String?
+  stripeCustomerId      String?        @unique
+  subscriptions         Subscription[]
+  createdAt             DateTime       @default(now())
+  updatedAt             DateTime       @updatedAt
+
+  @@index([createdAt])
+}
+
+model Subscription {
+  id                       String   @id @default(cuid())
+  userId                   String
+  user                     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripeSubscriptionId     String   @unique
+  stripePriceId            String?
+  planKey                  String   @default("configured")
+  status                   String
+  interval                 String?
+  currentPeriodEnd         DateTime?
+  cancelAtPeriodEnd        Boolean  @default(false)
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+
+  @@index([userId, status])
+}
+
+model ProcessedStripeEvent {
+  id          String   @id
+  type        String
+  processedAt DateTime @default(now())
+}
